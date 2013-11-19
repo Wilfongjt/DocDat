@@ -1,0 +1,77 @@
+  public void processAvg(PseudoElement eTo, PseudoElement eFrom) {
+        // look at all configs
+        for (int i = 0; i < getConfig().size(); i++) {
+            Attribute configAttDef = getConfig().getAttribute(i);  // expect several counts from configuration
+
+
+            if (configAttDef.getValue().equals(Constants.AttributeValues.AVG)) {
+                System.out.println("        --------------- ");
+                System.out.println("        configAttDef " + configAttDef);
+                Attribute eFrom_avgAtt = eFrom.getAttributes().getAttribute(configAttDef.getName());
+                if (eFrom_avgAtt != null && !eFrom_avgAtt.getValue().equals("0")) {// no value to sum
+                    System.out.println("        eFrom_avgAtt " + eFrom_avgAtt);
+                    /*
+                     * get  sum
+                     */
+                    // double count_correction = 0;
+                    String sName = Constants.AttributesTemp.SumPrefix + configAttDef.getName();
+                    Attribute sto = eTo.getAttributes().getAttribute(sName);
+
+                    if (sto == null) {
+                        sto = new Attribute(sName, "0");
+                        eTo.getAttributes().setAttribute(sto);
+                        //System.out.println("          add sum  to " + eTo.toString());
+                        //   count_correction = 0; // the sum value is really missing and not zero and the count needs to be correcte so we hedge here
+                    }
+
+                    /*
+                     * update counter
+                     */
+                    String cName = Constants.AttributesTemp.CounterPrefix + configAttDef.getName();
+                    Attribute cto = eTo.getAttributes().getAttribute(cName);
+
+                    if (cto == null) {
+                        cto = new Attribute(cName, "0");
+                        eTo.getAttributes().setAttribute(cto);
+                        // System.out.println("          add count  to " + eTo.toString());
+                    }
+                    try {
+                        Double cfTo = new Double(cto.getValue());
+                        Double cfFrom = new Double(1);
+                        // Double cfFrom = new Double( eFrom_avgAtt.getValue() );
+                        double count = (cfTo.doubleValue() + cfFrom.doubleValue());//+ count_correction;
+
+                        cto.setValue(Double.toString(count));
+                        System.out.println("     count: " + count + " = " + cfFrom + " + " + cfTo);
+
+                    } catch (Exception ex) {
+                        System.err.println(" processAvg " + ex.toString());
+                    }
+                    /*
+                     * update sum
+                     */
+                    Attribute sfr = eFrom.getAttributes().getAttribute(configAttDef.getName());
+                    try {
+                        Double sfTo = new Double(sto.getValue());
+                        Double sfFrom = new Double(sfr.getValue());
+                        double sum = sfTo.doubleValue() + sfFrom.doubleValue();
+                        sto.setValue(Double.toString(sum));
+                    } catch (Exception ex) {
+                        System.err.println(" processAvg " + ex.toString());
+
+                    }
+                    /*
+                     * calculate avg
+                     */
+                    String aName = getConfig().getFunctionFormattedName(configAttDef);
+                    Attribute ato = eTo.getAttributes().getAttribute(aName);
+                    Double cd = new Double(cto.getValue());
+                    Double sd = new Double(sto.getValue());
+                    double ad = sd.doubleValue() / cd.doubleValue();
+                    ato.setValue(Double.toString(ad));
+                } else {
+                    System.out.println("      skip " + eFrom_avgAtt);
+                }
+            }
+        }
+    }

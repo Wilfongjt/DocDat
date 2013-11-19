@@ -1,0 +1,40 @@
+Actor Scenarios
+ Glossery:
+Managed Communications are those where a manager brokers the communications between parties.  The manager recieves a communication from one party and has the option to rewrite the communication before permitting it to proceed to it's destination party.  This technique is useful for controlling the communications of inexperiecne employees. 
+Monitored Communications are those where a manager gets notice of communications between parties but is not required to approve the message before it gets sent. This technique is useful when the reviewer has some experience or when the project has some other organizational significance that may require the manager's.  This technique can also be thought of as an alert for system actors with an interest in a specific project.
+Ignore Commuincations is the situation where risk of miscommunication is low and the impact is low, the manager knows the project is straight forward, the reveiwer is experienced, and that all communication are logged for auditing.  The manager can safely ignore the communications.  
+Define Section 106 Environmental Review
+Define SHPO
+There are two types of actors in the workflow system:
+1. Normal users use the workflow package to see what tasks they should perform and give feedback on their progress.   These can be further distinguish by role as Editors, Editor-Proxies, Reviewers, Approvers. 
+2. Administrators define and maintain the workflow definitions that govern the tasks executed by normal users.  Administrators can be broken down by role as System Administrators,  Managers, and Help-Desk.
+
+Define Federal Regulations
+
+
+Define Players and primary role
+Define Player concerns (timing, functions)
+Define Timing
+Define Communications
+Define Logging 
+The setting
+1. Ed the Editor is a signitory for road repair and constuction company. Ed knows that by State and Federal law he must determine if the company's road project is going to impact any of the Michigan historical sites.  Ed lives in Florida with this wife, two boys, a dog and a cat.  Ed doesn’t know much about Michigan but he does know that Google is always a good way to start, so he Googles “Michigan Section 106 Environmental Review.”   Bingo! Ed finds a link to “MSHDA – Section 106 Application and Instructions – State of Michigan.” Ed pokes around on the SHPO website and discovers he can collaborate with a consultant to compile the required information and submit the work on-line.  Ed needs to set up an account, complete a registration process, and intiate a Section 106 Environmental Reveiw.    Ed also needs to get in touch with a list of consultants familiar with Michigan.  He can then invite one or more consultants to collaborate on the completion of the form.  Ed's time is valuable, so he hits Angie's List to look for Michigan consultants.
+ 
+1. Peter the Editor-Proxy is an independent certified consultant in Michigan.  Peter gathers historic place data and understands Michican's Secton 106 Environmental Review process. Peter has good reveiws on Angie's list and often gets invitations from clients to work on Section 106 Environmental Reviews.  
+2. Roger the "new guy" Reviewer is all of one hour old at his new job with the SHPO, just long enough to boot up his computer and check his Outlook email. Steve the Supervisor has sent him an email with a URL to the intranet version of MiSHPO.  Steve demands that Roger get his act together, set up an account, get registered, and request Section 106 Environmental Review (ER) privileges.   
+3. Roland the salty experienced Reviewer reviews materials submitted for Section 106 Environmental Reviews (ER) and sometimes reviews National Register of Historic Places Preliminary Questionaires (HRHP-PQ).  Roger fact checks and provides conformance monitoring and provides comments to those ends to the ER manager.  
+4. Mary the Section 106 Environmental Review (ER) Manager leads the ER program crew.
+1. She delegates reviews, manages communications, and grants privileges to her reviewers and approvers.  Mary's program is the busiest she expects to process 8000 new requests in 2012 and is comming down from a high of 20,000 reviews over the previous two years.  
+2. She also acts as a backup for two other program managers as the need arrises.    Each manager manages a different program.  Thankfully, each of the programs are integrated, having more similarities than differences and the look and feel is nearly same.  Mary enjoys the varity but apprieates the fact that see doesn't have to start from scratch with the system everytime she has to cover another program. 
+3. Mary has alot reviews and reviewer of different levels of experience and this puts her in the position of having to keep a close eye on some projects .  This has had an effect on quality and needs to take a more activer role in some cases.  Her most valuable system tools are the ability to manage/monitor communication and to assign more that one reveiwer to review.  This gives her the ability to tightly controlsShe can depend on the old salts like Roland it has been great to have options With the high volume, personel experience differences With new folks, Mary likes to employ two management techniques Communication management has become a focus for Mary and she needs to manage the flow of that communicaitons.She has a few old salts like Roland to provide some stability.  She has also had some issues around communications that have made her that Lynn the lawer has had to mitigate  
+5. She also has a new guy Roger who has sent her a request for ER reviewer privileges.  She could really use Roger’s help with reviews so she consents to Roger’s privilege upgrade. but she also knows that Roger is really, really, really new guy so  
+6. Mary also has the option to manage,  monitor, or ignore the communicatons between the ER reviewers and the Editor and Editor-proxies.  
+7. 
+8. Amanda the Approver asdfasf 
+9. Stephanie  the System Administrator handles 
+10. Harold at the Help-Desk
+11. Lynn the lawyer
+12. Audry the Auditor
+Ideas and sippets
+ 
+
