@@ -56,7 +56,7 @@ public class Calculate {
 
                 if (nest.getName().equalsIgnoreCase(nestTypeAtt.getName())) {
 
-                    System.out.println("  nest:" + "[" + nest_idx + "]" + nest.getName());
+                    //System.out.println("  nest:" + "[" + nest_idx + "]" + nest.getName());
                     double count = 0;
                     double sum = 0;
                     nest_idx++;
@@ -65,20 +65,20 @@ public class Calculate {
                     while (nest_idx < getElements().size() && !done) {
 
                         PseudoElement processElm = getElements().getElement(nest_idx);
-                        //System.out.println("   next: " + "[" + nest_idx + "]" + processElm.getName());
+                        ////System.out.println("   next: " + "[" + nest_idx + "]" + processElm.getName());
 
                         if (!getConfig().isNestBy(processElm)) { //skip other nests
                             // do some summing
-                            System.out.println("   process: " + "[" + nest_idx + "]" + processElm.getName());
+                            //System.out.println("   process: " + "[" + nest_idx + "]" + processElm.getName());
 
                             for (int j = 0; j < getConfig().size(); j++) {
                                 Attribute configFuncAtt = getConfig().getAttribute(j);
 
                                 if (configFuncAtt.getValue().equalsIgnoreCase(Constants.AttributeValues.COUNT)) {
-                                    //System.out.println("        count " + "[" + j + "]");
+                                    ////System.out.println("        count " + "[" + j + "]");
                                     Attribute foundAtt = processElm.getAttributes().getAttribute(formatFunctionName(configFuncAtt));
 
-                                    //  System.out.println("        lookat: " + processElm.getName() + " lookfor: " + configFuncAtt.getName() + "      found: " + foundAtt.getName());
+                                    //  //System.out.println("        lookat: " + processElm.getName() + " lookfor: " + configFuncAtt.getName() + "      found: " + foundAtt.getName());
 
                                     count += new Double(foundAtt.getValue()).doubleValue();
 
@@ -90,7 +90,7 @@ public class Calculate {
                                 }
 
                                 if (configFuncAtt.getValue().equalsIgnoreCase(Constants.AttributeValues.SUM)) {
-                                    System.out.println("        sum " + "[" + j + "]");
+                                    //System.out.println("        sum " + "[" + j + "]");
                                     Attribute foundAtt = processElm.getAttributes().getAttribute(formatFunctionName(configFuncAtt));
 
                                     sum += new Double(foundAtt.getValue()).doubleValue();
@@ -106,7 +106,7 @@ public class Calculate {
 
                         if (nestTypeAtt.getName().equalsIgnoreCase(getElements().getElement(nest_idx).getName())) {
                             done = true;
-                            System.out.println("   done: " + "[" + nest_idx + "]" + processElm.getName());
+                            //System.out.println("   done: " + "[" + nest_idx + "]" + processElm.getName());
                             nest_idx--;
                         } else {
                             nest_idx++;
@@ -115,7 +115,7 @@ public class Calculate {
 
                     }// while
 
-                    //System.out.println("  nest_idx:" + nest_idx);
+                    ////System.out.println("  nest_idx:" + nest_idx);
 
                 }
             }
@@ -123,7 +123,7 @@ public class Calculate {
     }
 
     public void calculate3() {
-        System.out.println(" caluculate 1");
+        //System.out.println(" caluculate 1");
         // start at bottom elements
         // while not first element
 
@@ -143,7 +143,7 @@ public class Calculate {
 
             if (att.getValue().equalsIgnoreCase(Constants.AttributeValues.NEST_BY)) {
 
-                System.out.println("  " + "[" + i + "]" + att.getName());
+                //System.out.println("  " + "[" + i + "]" + att.getName());
 
                 String curNestName = att.getName(); // name of nest cat
 
@@ -152,7 +152,7 @@ public class Calculate {
 
                     PseudoElement el = getElements().getElement(k);
 
-                    System.out.println("    " + "[" + k + "]" + el.getName());
+                    //System.out.println("    " + "[" + k + "]" + el.getName());
 
                     // process those element that are nests by name
                     if (curNestName.equalsIgnoreCase(el.getName())) {
@@ -166,7 +166,7 @@ public class Calculate {
                         k++; // move to the next element
                         PseudoElement next = getElements().getElement(k);
                         while (next != null && !next.getName().equalsIgnoreCase(curNestName)) {
-                            System.out.println("      " + "[" + k + "]" + next.getName());
+                            //System.out.println("      " + "[" + k + "]" + next.getName());
                             // loop through all the functions
                             //int c = 0;
                             //int s = 0;
@@ -177,7 +177,7 @@ public class Calculate {
 
                                     Attribute foundAtt = next.getAttributes().getAttribute(formatFunctionName(configFuncAtt));
 
-                                    System.out.println("      lookat: " + next.getName() + " lookfor: " + configFuncAtt.getName() + "      found: " + foundAtt.getName());
+                                    //System.out.println("      lookat: " + next.getName() + " lookfor: " + configFuncAtt.getName() + "      found: " + foundAtt.getName());
 
                                     count += new Double(foundAtt.getValue()).doubleValue();
 
@@ -189,10 +189,10 @@ public class Calculate {
 
                                 }
                                 if (configFuncAtt.getValue().equalsIgnoreCase(Constants.AttributeValues.SUM)) {
-                                    System.out.println("        sum");
+                                    //System.out.println("        sum");
                                     Attribute foundAtt = next.getAttributes().getAttribute(formatFunctionName(configFuncAtt));
 
-                                    System.out.println("      lookat: " + next.getName() + " lookfor: " + configFuncAtt.getName() + "      found: " + foundAtt.getName());
+                                    //System.out.println("      lookat: " + next.getName() + " lookfor: " + configFuncAtt.getName() + "      found: " + foundAtt.getName());
 
                                     //sum[s++] += new Double(foundAtt.getValue()).doubleValue();
                                     sum += new Double(foundAtt.getValue()).doubleValue();
@@ -230,7 +230,7 @@ public class Calculate {
              */
         }
 
-        System.out.println(" caluculate 1");
+        //System.out.println(" caluculate 1");
     }
     /*
      * functionName is count(), sum(), avg()
@@ -327,7 +327,7 @@ public class Calculate {
      * this one doesnt stop properly
      */
     protected double calculateNestByFunctions2(int i, String functionName, String functionAttName) {
-        // System.out.println("calculateNestByFunctions2 1");
+        // //System.out.println("calculateNestByFunctions2 1");
         double rc = 0;
         PseudoElement e = getElements().getElement(i);
 
@@ -348,7 +348,7 @@ public class Calculate {
 
 
         if (getConfig().isNestBy(e)) {
-            System.out.println("    nestby  " + e.getName());
+            //System.out.println("    nestby  " + e.getName());
             rc = calculateNestByFunctions2(i + 1, functionName, functionAttName); // move on to the next element
             // update this elements count
             Attribute foundAtt = e.getAttributes().getAttribute(functionAttName);
@@ -363,14 +363,14 @@ public class Calculate {
 
                 }
             } catch (Exception ex) {
-                System.out.println("1 e " + e.getName() + "  error: " + ex.toString());
+                //System.out.println("1 e " + e.getName() + "  error: " + ex.toString());
 
 
             }
         } else {
 
             if (getConfig().hasFunction(functionName, e)) {
-                System.out.println("    function " + functionName);
+                //System.out.println("    function " + functionName);
                 Attribute foundAtt = e.getAttributes().getAttribute(functionAttName);
 
 
@@ -384,7 +384,7 @@ public class Calculate {
 
                     }
                 } catch (Exception ex) {
-                    System.out.println("2 e " + e.getName() + "  error: " + ex.toString());
+                    //System.out.println("2 e " + e.getName() + "  error: " + ex.toString());
 
 
                 }

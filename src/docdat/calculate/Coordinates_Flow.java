@@ -32,10 +32,10 @@ public class Coordinates_Flow implements CoordinatesInterface {
 
     @Override
     public void calculate() {
-        //System.out.println(".................. ");
+        ////System.out.println(".................. ");
 
         if (getElements().size() == 0) {
-            System.out.println("calculate reports chart has no steps.");
+            //System.out.println("calculate reports chart has no steps.");
             return;
         }
 
@@ -75,16 +75,16 @@ public class Coordinates_Flow implements CoordinatesInterface {
         if (step == null) {
             return 0;
         }
-        System.out.print(" [" + step.getName() + "]");
-        System.out.print("d[" + isDangle(step) + "]");
-        System.out.print("p[" + step.getPosition() + "] ");
-        System.out.print("c[" + step.getChildNo() + "]");
-        System.out.print(" w[" + step.getW() + "]");
-        System.out.print(" aw[" + getActualWidth(step) + "]");
-        System.out.print(" lw[" + getLeftWidth(step) + "]");
-        System.out.print(" rw[" + getRightWidth(step) + "]");
-        System.out.print(": ");
-        System.out.println("");
+        //System.out.print(" [" + step.getName() + "]");
+        //System.out.print("d[" + isDangle(step) + "]");
+        //System.out.print("p[" + step.getPosition() + "] ");
+        //System.out.print("c[" + step.getChildNo() + "]");
+        //System.out.print(" w[" + step.getW() + "]");
+        //System.out.print(" aw[" + getActualWidth(step) + "]");
+        //System.out.print(" lw[" + getLeftWidth(step) + "]");
+        //System.out.print(" rw[" + getRightWidth(step) + "]");
+        //System.out.print(": ");
+        //System.out.println("");
 
         int dangleWidth = 0;
         int k = 0;
@@ -92,12 +92,12 @@ public class Coordinates_Flow implements CoordinatesInterface {
         //  if (isDangle(parent)) {
         //      parent = getElements().getParent(parent);  // dangles
         //  }
-        // System.out.print("[+" + step.getName() + "  " + (getActualWidth(step) / 2) + "]");
+        // //System.out.print("[+" + step.getName() + "  " + (getActualWidth(step) / 2) + "]");
         //sum = getActualWidth(step) / 2;
         int w = 0;
         while (parent != null && !parent.getId().equals("0")) {
             // handle conditions and tops
-            System.out.print("+" + "[" + parent.getName() + ", ");
+            //System.out.print("+" + "[" + parent.getName() + ", ");
 
 
             if (isTop(parent) && isCondition(parent)) {
@@ -107,29 +107,29 @@ public class Coordinates_Flow implements CoordinatesInterface {
                     case Constants.Directions.NEGATIVE:
                         w = (getRightWidth(parent));
                         sum += direction * w;
-                        System.out.print("a" + w);
+                        //System.out.print("a" + w);
                         break;
                     case 0:
                         break;
                     case Constants.Directions.POSITIVE:
-                        // System.out.print("+L1");
+                        // //System.out.print("+L1");
                         w = (getLeftWidth(parent));
                         sum += direction * w;
-                        System.out.print("b" + w);
+                        //System.out.print("b" + w);
                         break;
 
                 }
                 /*
                 if (direction == Constants.Directions.POSITIVE) {
-                // System.out.print("+L1");
+                // //System.out.print("+L1");
                 w = (direction * getLeftWidth(parent));
                 sum += (direction * getLeftWidth(parent));
-                System.out.print("a" + w);
+                //System.out.print("a" + w);
                 } else {
-                //System.out.print("-R1");
+                ////System.out.print("-R1");
                 w = (direction * getRightWidth(parent));
                 sum += (direction * getRightWidth(parent));
-                System.out.print("b" + w);
+                //System.out.print("b" + w);
                 }
                  */
             }
@@ -138,41 +138,41 @@ public class Coordinates_Flow implements CoordinatesInterface {
                 int direction = getDirection(parent);
                 ;
                 if (direction == Constants.Directions.POSITIVE) {
-                    // System.out.print("+L2");
+                    // //System.out.print("+L2");
                     w = (direction * getLeftWidth(parent));
                     sum += (direction * getLeftWidth(parent));
-                    System.out.print("c" + w);
+                    //System.out.print("c" + w);
                     //sum += (direction * Constants.MinXOffset);
                 } else {
-                    //  System.out.print("-R2");
+                    //  //System.out.print("-R2");
                     w = (direction * getRightWidth(parent));
                     sum += (direction * getRightWidth(parent));
-                    System.out.print("d" + w);
+                    //System.out.print("d" + w);
                     //sum += (direction * Constants.MinXOffset);
                 }
             }
 
 
             if (!isTop(parent) && isCondition(parent)) {
-                System.out.print("!top and condition");
+                //System.out.print("!top and condition");
             }
             if (!isTop(parent) && !isCondition(parent)) {
-                System.out.print("!top and !condition");
+                //System.out.print("!top and !condition");
 
             }
-            System.out.print("] ");
+            //System.out.print("] ");
 
             parent = getElements().getParent(parent);
 
         }
         // always add the root parent
         w = (getLeftWidth(parent));
-        System.out.print("[++" + parent.getName() + "," + w + "]");
+        //System.out.print("[++" + parent.getName() + "," + w + "]");
         // sum += getActualWidth(parent) / 2;
         sum += w;
-        System.out.println(" = " + sum);
-        System.out.println("");
-        System.out.println("");
+        //System.out.println(" = " + sum);
+        //System.out.println("");
+        //System.out.println("");
 
         return sum;
     }
@@ -180,25 +180,25 @@ public class Coordinates_Flow implements CoordinatesInterface {
     protected int getDirection(PseudoElement elem) {
         // PseudoElement parent = getElements().getParent(elem);
         if (elem == null) {
-            //System.out.print("w");
+            ////System.out.print("w");
             return 1; // first elemen
         }
         if (elem.getId().equals("0")) {
-            //System.out.print("x");
+            ////System.out.print("x");
             return -1;  // take care of the first child of first elem
         }
 
 
         if (isDangle(elem)) { // dangles take on the direction of the parent
             PseudoElement parent = getElements().getParent(elem);
-            // System.out.print("d");
+            // //System.out.print("d");
             if (parent.getChildNo() == 0) {
-                // System.out.print("y");
+                // //System.out.print("y");
                 return -1;
             }
         } else {// 0 child is left 
             if (elem.getChildNo() == 0) {
-                //System.out.print("z");
+                ////System.out.print("z");
                 return -1;
 
             }
@@ -252,13 +252,13 @@ public class Coordinates_Flow implements CoordinatesInterface {
 
         PseudoElement parent = getElements().getParent(elem);
         if (parent == null) {
-            // System.out.print("g ");
+            // //System.out.print("g ");
             return false;
         }
         if (!parent.isCondition()) {
             return true;
         }
-        // System.out.print("h");
+        // //System.out.print("h");
         return false;
     }
 
@@ -281,7 +281,7 @@ public class Coordinates_Flow implements CoordinatesInterface {
 
         // search all items backwards
         int currLevel = startElem.getLevel();
-        // System.out.print(startElem.getName() + "level(" + startElem.getLevel() + ")" + ": ");
+        // //System.out.print(startElem.getName() + "level(" + startElem.getLevel() + ")" + ": ");
 
         for (int i = position; i > 0; i--) {
             PseudoElement prevElem = (PseudoElement) getElements().get(i);
@@ -296,7 +296,7 @@ public class Coordinates_Flow implements CoordinatesInterface {
                     || prevElem.getLevel() < currLevel) {
                 currLevel = prevElem.getLevel();
                 if (prevElem.isCondition()) {
-                    //System.out.print("+ " + prevElem.getName() + "(" + prevElem.getLevel() + ")" + prevElem.getH() + "[a]");
+                    ////System.out.print("+ " + prevElem.getName() + "(" + prevElem.getLevel() + ")" + prevElem.getH() + "[a]");
                     if (i == position) {
                         sum += prevElem.getH() / 2;
                         sum += Constants.MinYOffset;
@@ -313,7 +313,7 @@ public class Coordinates_Flow implements CoordinatesInterface {
                     }*/
 
                     if (parentElem.isCondition()) {
-                        //System.out.print("+ " + prevElem.getName() + "(" + prevElem.getLevel() + ")" + prevElem.getH() + "[b]");
+                        ////System.out.print("+ " + prevElem.getName() + "(" + prevElem.getLevel() + ")" + prevElem.getH() + "[b]");
                         if (i == position) {
                             sum += prevElem.getH() / 2;
                             sum += Constants.MinYOffset;
@@ -322,7 +322,7 @@ public class Coordinates_Flow implements CoordinatesInterface {
                             sum += Constants.MinYOffset;
                         }
                     } else {
-                        //System.out.print("+ " + prevElem.getName() + "(" + prevElem.getLevel() + ")" + prevElem.getH() + "[c]");
+                        ////System.out.print("+ " + prevElem.getName() + "(" + prevElem.getLevel() + ")" + prevElem.getH() + "[c]");
                         // add current height
                         if (i == position) {
                             sum += prevElem.getH() / 2;
@@ -342,8 +342,8 @@ public class Coordinates_Flow implements CoordinatesInterface {
         PseudoElement zeroElem = (PseudoElement) getElements().getZeroElement();
         sum += zeroElem.getH();
         sum += +Constants.MinYOffset;
-        // System.out.print("+ " + zeroElem.getName() + "(" + zeroElem.getLevel() + ")" + "[d] [" + zeroElem.getH() + "]");
-        //System.out.println("");
+        // //System.out.print("+ " + zeroElem.getName() + "(" + zeroElem.getLevel() + ")" + "[d] [" + zeroElem.getH() + "]");
+        ////System.out.println("");
         return sum;
     }
 
@@ -379,13 +379,13 @@ public class Coordinates_Flow implements CoordinatesInterface {
                 if (isTop(t)) {
 
                     level = t.getLevel();
-                    // System.out.print(" bk ");
+                    // //System.out.print(" bk ");
                     break;
                 }
             }
         }
 
-        //System.out.print(startElem.getName() + " i[" + position + "]p[" + startElem.getPosition() + "] L[" + startElem.getLevel() + "]");
+        ////System.out.print(startElem.getName() + " i[" + position + "]p[" + startElem.getPosition() + "] L[" + startElem.getLevel() + "]");
 
         // start at top above current position and work down
         for (int i = position; i < getElements().size(); i++) {
@@ -395,7 +395,7 @@ public class Coordinates_Flow implements CoordinatesInterface {
             // stop when the next elem of the same level is reached, this marks the end
             if (elem.getPosition() != position) {// skip first elem because it will have the same level and cause a premature stop
                 if (elem.getLevel() <= level) {    // higher or equal level mean the branch has been traversed
-                    //  System.out.print(" break p " + startElem.getPosition()+"  l "+ elem.getLevel());
+                    //  //System.out.print(" break p " + startElem.getPosition()+"  l "+ elem.getLevel());
                     break;
                 }
             }
@@ -409,7 +409,7 @@ public class Coordinates_Flow implements CoordinatesInterface {
             if (isTop(elem)) {
                 //dw = elem.getW()/2;
                 //dw += Constants.MinXOffset;
-                // System.out.print("top [" + elem.getName() + "]");
+                // //System.out.print("top [" + elem.getName() + "]");
                 sum += dw;
                 dw = 0;
             }
@@ -423,11 +423,11 @@ public class Coordinates_Flow implements CoordinatesInterface {
 
         }
         if (dw > 0) {
-            // System.out.print("top [ extra]");
+            // //System.out.print("top [ extra]");
         }
         sum += dw;
-        // System.out.println(": " + sum);
-        //System.out.println("");
+        // //System.out.println(": " + sum);
+        ////System.out.println("");
         return sum;
     }
 
@@ -439,7 +439,7 @@ public class Coordinates_Flow implements CoordinatesInterface {
             return 0;
         }
         if (!isDangle(startStep)) {
-            System.out.println("not a dangle");
+            //System.out.println("not a dangle");
             return 0;
         }
         // find the widest sibling
@@ -497,7 +497,7 @@ public class Coordinates_Flow implements CoordinatesInterface {
         int stackwidth = 0;
         int width = 0;
         if (startStep == null) {
-            //System.out.print(" a");
+            ////System.out.print(" a");
             return 0;
         }
         width = startStep.getW();
@@ -505,7 +505,7 @@ public class Coordinates_Flow implements CoordinatesInterface {
 
         // no children then half width is going to be half of step width
         if (!getElements().hasChild(startStep)) {
-            //System.out.print(" b");
+            ////System.out.print(" b");
             return startStep.getW() / 2;
         }
 
@@ -535,7 +535,7 @@ public class Coordinates_Flow implements CoordinatesInterface {
         }
 
         if (leftElem != null) {
-            System.out.print(" c ");
+            //System.out.print(" c ");
             aw = getActualWidth(leftElem);
             //aw += startStep.getW() / 2;
             aw += width / 2;

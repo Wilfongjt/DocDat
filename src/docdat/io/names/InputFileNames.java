@@ -40,7 +40,7 @@ public class InputFileNames extends ArrayList  {
         //   determine the extention
         //   determine the task
 
-System.out.println(" getInFolder: " + getInFolder());
+////System.out.println(" getInFolder: " + getInFolder());
         File dir = new File(getInFolder());
         String[] children = null;
 
@@ -93,7 +93,7 @@ System.out.println(" getInFolder: " + getInFolder());
                 return rc;
             }
         };
-System.out.println("  dir: " + dir );
+////System.out.println("  dir: " + dir );
         children = dir.list(filter);
 
         for (int i = 0; i < children.length; i++) {
@@ -103,12 +103,12 @@ System.out.println("  dir: " + dir );
     }
 
     public void showFileNames() {
-        System.out.println("-------------------- Files");
+        ////System.out.println("-------------------- Files");
         for (int i = 0; i < this.size(); i++) {
-            System.out.println("    file: [" + i + "] " + ((InFileName) get(i)).getPathAndFileName() );
+            ////System.out.println("    file: [" + i + "] " + ((InFileName) get(i)).getPathAndFileName() );
 
         }
-        System.out.println("--------------------");
+        ////System.out.println("--------------------");
     }
 
     public InFileName getFileName(int i) {

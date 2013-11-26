@@ -33,7 +33,7 @@ public String getClassName(){return "Coordinates_Hierarchical_Vertical";}
       return (int) summ;
     }
 
-    //System.out.println("getX 2");
+    ////System.out.println("getX 2");
 
     PseudoElement parent = (PseudoElement) getElements().getParent(firstStep);
     //while (parent.getIdx() > 0) {

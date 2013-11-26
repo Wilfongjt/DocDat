@@ -87,7 +87,7 @@ public class TEXT_Assembler {
     mfFile.mkdirs();
 
     for (int d = 0; d < mfFile.listFiles().length; d++) {
-      System.out.println("Delete temp file: " + mfFile.listFiles()[d].getName());
+      //System.out.println("Delete temp file: " + mfFile.listFiles()[d].getName());
       mfFile.listFiles()[d].delete();
     }
 
@@ -111,9 +111,9 @@ public class TEXT_Assembler {
       getMasterElements().add(elems);
 
     }
-    System.out.println(" getMasterElements().postProcess() 1 ");
+    //System.out.println(" getMasterElements().postProcess() 1 ");
     getMasterElements().postProcess(); // fix the cross file no references
-    System.out.println(" getMasterElements().postProcess() 2 think about multiple lines and line returns and lines that do not start with a nuember");
+    //System.out.println(" getMasterElements().postProcess() 2 think about multiple lines and line returns and lines that do not start with a nuember");
     // export intermediate xml files
     for (int i = 0; i < inputFiles.size(); i++) {
 
@@ -134,10 +134,10 @@ public class TEXT_Assembler {
 
       BufferedWriter mf = new BufferedWriter(new FileWriter(oFile)); // prepare output file
 
-      System.out.println("mem 2=" + Runtime.getRuntime().freeMemory());
+      //System.out.println("mem 2=" + Runtime.getRuntime().freeMemory());
       String line = "";
       while ((line = bf.readLine()) != null) {
-        System.out.println(line);
+        //System.out.println(line);
         mf.write(line);
       }
       bf.close();
@@ -175,13 +175,13 @@ public class TEXT_Assembler {
       transform_XSLInputStream.close();
       XML_OutputOutputStream.close();
     } else {
-      System.out.println("  No files found in [" + getProject_Path() + "]");
+      //System.out.println("  No files found in [" + getProject_Path() + "]");
     }
 
 
-    System.out.println("out: " + "file:/" + getProject_Path().replace("\\", "/") + "merge/" + "mindjet-merge.xml");
-    System.out.println("mem 4=" + Runtime.getRuntime().freeMemory());
-    System.out.println("testOdtReader out");
+    //System.out.println("out: " + "file:/" + getProject_Path().replace("\\", "/") + "merge/" + "mindjet-merge.xml");
+    //System.out.println("mem 4=" + Runtime.getRuntime().freeMemory());
+    //System.out.println("testOdtReader out");
   }
 
   private static InputStream getDummyXMLInputStream() {
@@ -222,17 +222,17 @@ public class TEXT_Assembler {
     rc += ">" + "\n";
 
     rc += "           <Sources imported=\"" + new Date() + "\">" + "\n";
-    System.out.println("  inFileNames: " + inFileNames.size() + "  assetFileNames: " + assetFileNames.size());
+    //System.out.println("  inFileNames: " + inFileNames.size() + "  assetFileNames: " + assetFileNames.size());
     for (int i = 0; i < inFileNames.size(); i++) {
       // only allow the xml files to be processed
       if (inFileNames.getFileName(i).getExtension().equalsIgnoreCase(Constants.Extentions.XML)) {
-        //System.out.println(" assetFileNames.getFileName(i) : " +  assetFileNames.getFileName(i)  );
-        //System.out.println(" assetFileNames.getFileName(i).getFileNameWithNoExtension() : " +   );
-        //System.out.println(" assetFileNames.getFileName(i).getPathAndFileName() : " +  assetFileNames.getFileName(i).getPathAndFileName()   );
+        ////System.out.println(" assetFileNames.getFileName(i) : " +  assetFileNames.getFileName(i)  );
+        ////System.out.println(" assetFileNames.getFileName(i).getFileNameWithNoExtension() : " +   );
+        ////System.out.println(" assetFileNames.getFileName(i).getPathAndFileName() : " +  assetFileNames.getFileName(i).getPathAndFileName()   );
         String fn = "";
         String lmod = "";
         try {
-          //System.out.println(" assetFileNames : [" + i +"] " + assetFileNames.getFileName(i).getProjectName()  );
+          ////System.out.println(" assetFileNames : [" + i +"] " + assetFileNames.getFileName(i).getProjectName()  );
           String prjName = inFileNames.getFileName(i).getProjectName();
 
           for (int z = 0; z < assetFileNames.size(); z++) {
@@ -244,7 +244,7 @@ public class TEXT_Assembler {
             }
           }
         } catch (Exception e) {
-          System.out.println("error here");
+          //System.out.println("error here");
           e.printStackTrace();
         }
 
@@ -295,7 +295,7 @@ public class TEXT_Assembler {
     rc += "    </xsl:template>" + "\n";
     rc += "</xsl:stylesheet>" + "\n";
 
-    System.out.println(rc);
+    //System.out.println(rc);
 
 
     return new ByteArrayInputStream(rc.getBytes());

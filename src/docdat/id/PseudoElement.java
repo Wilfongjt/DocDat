@@ -282,7 +282,7 @@ public class PseudoElement extends Id {
       att = new Attribute(Constants.YName, new Integer(yv).toString());
       getAttributes().setAttribute(att);
     }
-    //System.out.println("setY " +yv);
+    ////////System.out.println("setY " +yv);
     att.setValue(new Integer(yv).toString());
   }
 
@@ -351,7 +351,7 @@ public class PseudoElement extends Id {
         return false;
       }
       // find existing attribute by sumbyAtt
-      //  System.out.println("  sumByAtts ["+j+"]'"+ sumByAtts[j]);
+      //  //////System.out.println("  sumByAtts ["+j+"]'"+ sumByAtts[j]);
       Attribute att = getAttributes().getAttribute(sumByAtts[j].getName());
       if (att == null) { // match on name
         return false;// if fail att search by name then not a match
@@ -444,32 +444,32 @@ public class PseudoElement extends Id {
   public void countAttributes(Attribute[] attsCountTargets) {
     // this moves attCountTarget values into this element's count values
     if (attsCountTargets == null) {
-      // System.out.println(" countsAttributes return");
+      // //////System.out.println(" countsAttributes return");
       return;
     }
 
     for (int i = 0; i < attsCountTargets.length; i++) {
       // this name should be count(nnn)
-      // System.out.println("  search for: " + attsCountTargets[i].getName());
+      // //////System.out.println("  search for: " + attsCountTargets[i].getName());
       Attribute foundAtt = this.getAttributes().getAttribute(attsCountTargets[i].getName()); // search for function name if
-      // System.out.println("    foundAtt " + foundAtt);
+      // //////System.out.println("    foundAtt " + foundAtt);
       try {
         if (foundAtt != null) {
 
           if (foundAtt.getValue().equalsIgnoreCase(Constants.AttributeValues.COUNT)) {
             foundAtt.setValue("0");
           }
-          //System.out.println("  1 found name: "+foundAtt.getName() + "  " + foundAtt.getValue());
+          ////////System.out.println("  1 found name: "+foundAtt.getName() + "  " + foundAtt.getValue());
           Double targetNumber = new Double(foundAtt.getValue());
           Double addNumber = new Double("1");
           //Double addNumber = new Double(attsCountTargets[i].getValue());
 
           Double newValue = new Double(targetNumber.doubleValue() + addNumber.doubleValue());
           foundAtt.setValue(newValue.toString());
-          //System.out.println(" countAttributes  name: " + foundAtt.getName() + "  value: " + foundAtt.getValue());
+          ////////System.out.println(" countAttributes  name: " + foundAtt.getName() + "  value: " + foundAtt.getValue());
         }
       } catch (Exception e) {
-        System.out.println("  error: " + e.toString());
+        //////System.out.println("  error: " + e.toString());
 
       }
     }
@@ -477,29 +477,29 @@ public class PseudoElement extends Id {
 
   /*
   public void countAttributes(Attribute[] attsCount) {
-  System.out.println("countAttributes 1 add counts to " + getName());
+  //////System.out.println("countAttributes 1 add counts to " + getName());
   if (attsCount == null) { // may not have sums if so then attsSum will be null
   return;
   }
-  System.out.println("  countAttributes 2 ");
+  //////System.out.println("  countAttributes 2 ");
   int cnt = 0;
   for (int i = 0; i < attsCount.length; i++) {
   if (attsCount[i] != null) {
   cnt++;
   }
   }
-  System.out.println("  countAttributes 3 ");
+  //////System.out.println("  countAttributes 3 ");
   if (cnt != attsCount.length) {// no sum atts
   return;
   }
-  System.out.println("  countAttributes 4 ");
+  //////System.out.println("  countAttributes 4 ");
   for (int i = 0; i < attsCount.length; i++) {
   
   if (attsCount[i] != null) { // some count atts may be null but not all
-  System.out.println("  countAttributes 5 ");
+  //////System.out.println("  countAttributes 5 ");
   // String countName = Constants.AttributeValues.COUNT.replace("()", "(" + attsCount[i].getName() + ")"); //"sum(" + attsSum[i].getName() + ")";
   
-  System.out.println("    serarch for: " + attsCount[i].getName() );
+  //////System.out.println("    serarch for: " + attsCount[i].getName() );
   
   //Attribute foundAtt = this.getAttributes().getAttribute(attsCount[i].getName() );
   // search for the function name  and then
@@ -507,23 +507,23 @@ public class PseudoElement extends Id {
   if (foundAtt == null) {
   
   
-  System.out.println("  countAttributes 6 not found add new a");
+  //////System.out.println("  countAttributes 6 not found add new a");
   //foundAtt = new Attribute(countName, "0");
   //this.getAttributes().setAttribute(foundAtt);
   foundAtt = new CountAttribute(attsCount[i].getName(), "0");
-  System.out.println("  countAttributes 6 add new b");
+  //////System.out.println("  countAttributes 6 add new b");
   this.getAttributes().setAttribute(foundAtt);
-  System.out.println("  countAttributes 6 add new  c " + " name: " + foundAtt.getName() + "   value: " + foundAtt.getValue());
+  //////System.out.println("  countAttributes 6 add new  c " + " name: " + foundAtt.getName() + "   value: " + foundAtt.getValue());
   // foundAtt = foundAtt;
   
   
   }
-  System.out.println("  countAttributes 7 name: " + getName());
+  //////System.out.println("  countAttributes 7 name: " + getName());
   try {
-  // System.out.print("  add count ");
+  // //////System.out.print("  add count ");
   Integer curval = new Integer(foundAtt.getValue());
-  System.out.println("  countAttributes 8 " + attsCount[i]);
-  System.out.println("  countAttributes 8 " + attsCount[i].getValue());
+  //////System.out.println("  countAttributes 8 " + attsCount[i]);
+  //////System.out.println("  countAttributes 8 " + attsCount[i].getValue());
   // new value will be null when count has not started ... need to patch it up
   Integer newval = new Integer(attsCount[i].getValue());
   if (foundAtt.getValue().equals("0")) {
@@ -531,11 +531,11 @@ public class PseudoElement extends Id {
   
   }
   
-  System.out.println("  countAttributes 9 ");
+  //////System.out.println("  countAttributes 9 ");
   
   int count = curval.intValue() + newval.intValue();
   
-  System.out.println("   add " + count + " to " + foundAtt.getName());
+  //////System.out.println("   add " + count + " to " + foundAtt.getName());
   foundAtt.setValue(Integer.toString(count));
   } catch (Exception e) { // display err
   foundAtt.setValue(Constants.ErrorMsgs.ERR);
@@ -543,11 +543,11 @@ public class PseudoElement extends Id {
   
   }
   }
-  System.out.println("  ");
+  //////System.out.println("  ");
   }
    */
   public void sumAttributes(Attribute[] attsSum) {
-    // System.out.println("sumAttributes 1");
+    // //////System.out.println("sumAttributes 1");
     // check attsSum for null if null the return
     // check attsSum for all null atts if null then return ... means
     // for all the sum atts
@@ -561,7 +561,7 @@ public class PseudoElement extends Id {
       return;
 
 
-    } //System.out.println("sumAttributes 2");
+    } ////////System.out.println("sumAttributes 2");
     int cnt = 0;
 
 
@@ -571,26 +571,26 @@ public class PseudoElement extends Id {
         cnt++;
       }
     }
-    //System.out.println("sumAttributes 3 cnt: " + cnt + " attsSum.length :" + attsSum.length);
+    ////////System.out.println("sumAttributes 3 cnt: " + cnt + " attsSum.length :" + attsSum.length);
     if (cnt != attsSum.length) {// no sum atts
       return;
     }
-    //System.out.println("sumAttributes 4");
+    ////////System.out.println("sumAttributes 4");
     for (int i = 0; i < attsSum.length; i++) {
-      //System.out.println("sumAttributes 5");
+      ////////System.out.println("sumAttributes 5");
       if (attsSum[i] != null) { // some sum atts may be null but not all
-        // System.out.println("sumAttributes 6");
+        // //////System.out.println("sumAttributes 6");
         String sumName = "sum(" + attsSum[i].getName() + ")";
         // search for sum name if
         Attribute foundAtt = this.getAttributes().getAttribute(sumName);
 
         if (foundAtt == null) { // format attribute and add
-          //System.out.println("sumAttributes 7");
+          ////////System.out.println("sumAttributes 7");
           this.getAttributes().setAttribute(sumName, attsSum[i].getValue());
 
 
         } else { // update the sum
-          //System.out.println("sumAttributes 8");
+          ////////System.out.println("sumAttributes 8");
           if (foundAtt.getValue().equalsIgnoreCase(Constants.AttributeValues.SUM)) {
             foundAtt.setValue("0");
           }
@@ -603,14 +603,14 @@ public class PseudoElement extends Id {
             foundAtt.setValue(Double.toString(sum));
 
           } catch (Exception e) { // display err
-            System.out.println("sumAttributes ERR " + e.toString());
+            //////System.out.println("sumAttributes ERR " + e.toString());
             foundAtt.setValue(Constants.ErrorMsgs.ERR);
 
           }
         }
       }
     }
-    //  System.out.println("sumAttributes out");
+    //  //////System.out.println("sumAttributes out");
 
     // reformat the sum attribute into search-name sum(attsSum[i])
     // check for search-name
@@ -767,15 +767,15 @@ public class PseudoElement extends Id {
   public void clearTempAttributes() {
     for (int i = getAttributes().size() - 1; i > 0; i--) {
       Attribute att = getAttributes().getAttribute(i);
-      //System.out.println("element " + att);
+      ////////System.out.println("element " + att);
       if (att.getName().contains(Constants.AttributesTemp.CounterPrefix)) {
-        //               System.out.println("  clear " +att.getName());
+        //               //////System.out.println("  clear " +att.getName());
         getAttributes().remove(i);
       }
 
 
       if (att.getName().contains(Constants.AttributesTemp.SumPrefix)) {
-        //            System.out.println("  clear " +att.getName());
+        //            //////System.out.println("  clear " +att.getName());
         getAttributes().remove(i);
       }
 

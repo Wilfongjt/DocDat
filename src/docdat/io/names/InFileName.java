@@ -45,20 +45,20 @@ public class InFileName extends ArrayList {
 
     public InFileName(String path, String filename) throws FileNotFoundException, IOException, UnknownFileTypeException, TransformerException {
        
-      System.out.println("InFileName 1");
+      //System.out.println("InFileName 1");
       setPath(path);
         StringParser SP = new StringParser();
         int cnt = SP.ColumnCount(filename, '.');
-        //System.out.println("cnt: "+cnt);
+        ////System.out.println("cnt: "+cnt);
         for (int i = 1; i <= cnt; i++) {
             add(SP.getValue(filename, i, '.'));
         }
         setDefaults();
-    System.out.println("InFileName 2");
+    //System.out.println("InFileName 2");
         parseConfiguration();
     
         replaceProxy();
-        System.out.println("InFileName out");
+        //System.out.println("InFileName out");
     }
     private Configuration configuration = new Configuration();
 
@@ -73,7 +73,7 @@ public class InFileName extends ArrayList {
         return "http:////" +  getPathAndFileName().substring(3).replace("\\", "/"); 
     }*/
     public void setPathAndFileName(String pathandfilename) throws FileNotFoundException, IOException, UnknownFileTypeException, TransformerException{
-        System.out.println("setPathAndFileName :" + pathandfilename);
+        //System.out.println("setPathAndFileName :" + pathandfilename);
         clear();// remove all objects
         String path = "";
         String filename = "";
@@ -85,13 +85,13 @@ public class InFileName extends ArrayList {
 
         StringParser SP = new StringParser();
         int cnt = SP.ColumnCount(filename, '.');
-        //System.out.println("cnt: "+cnt);
+        ////System.out.println("cnt: "+cnt);
         for (int i = 1; i <= cnt; i++) {
             add(SP.getValue(filename, i, '.'));
         }
         setDefaults();
 
-        System.out.println("setPathAndFileName : out " + getFileName());
+        //System.out.println("setPathAndFileName : out " + getFileName());
     }
     private String _Path = "";
 
@@ -244,7 +244,7 @@ public class InFileName extends ArrayList {
     }
 
     public void setPluck(boolean IsPluck) {
-        System.out.println("setSummary "+IsPluck);
+        //System.out.println("setSummary "+IsPluck);
         this.Pluck = IsPluck;
     }
     /*
@@ -258,7 +258,7 @@ public class InFileName extends ArrayList {
     }
 
     public void setSummary(boolean IsSummary) {
-        System.out.println("setSummary "+IsSummary);
+        //System.out.println("setSummary "+IsSummary);
         this.Summary = IsSummary;
     }
 
@@ -280,7 +280,7 @@ public class InFileName extends ArrayList {
     }
 
     public void setMasterReference(boolean MasterReference) {
-        System.out.println("setMasterReference "+MasterReference);
+        //System.out.println("setMasterReference "+MasterReference);
         this.MasterReference = MasterReference;
     }
 
@@ -425,7 +425,7 @@ public class InFileName extends ArrayList {
 
     public String getFileName() {
         String rc = "";
-        //System.out.println("size: "+size());
+        ////System.out.println("size: "+size());
 
 
         for (int i = 0; i
@@ -446,7 +446,7 @@ public class InFileName extends ArrayList {
 
     public String getFileNameWithNoExtension() {
         String rc = "";
-        //System.out.println("size: "+size());
+        ////System.out.println("size: "+size());
 
 
         if (getType().equalsIgnoreCase(Constants.Type.TEXT)) {
@@ -508,15 +508,15 @@ public class InFileName extends ArrayList {
         // [proxied:][name:group-by][day:group-by][hours: evaluate(end-time - start-time )] [hours:sum()]
         // [proxied:][element-name:pluck]
         // order doesnt matter
-//System.out.println(" parseConfiguration 1i sMasterReference(): " + isMasterReference() + "  isSummary(): " + isSummary() );
+////System.out.println(" parseConfiguration 1i sMasterReference(): " + isMasterReference() + "  isSummary(): " + isSummary() );
 
         // skip all but
- System.out.println("parseConfiguration 1");
+ //System.out.println("parseConfiguration 1");
         if (!isMasterReference() && !isSummary() && !isPluck()) {
             return;
 
         }
-System.out.println(" parseConfiguration 2");
+//System.out.println(" parseConfiguration 2");
 
         BufferedReader bfr = new BufferedReader(InputStreamReaderFactory.getInputStreamObject(this));
         String line = ""; // expect a single line of text
@@ -528,7 +528,7 @@ System.out.println(" parseConfiguration 2");
         while ((ln = bfr.readLine()) != null) {
             line += " " + ln;
         }
-System.out.println(" parseConfiguration 3");
+//System.out.println(" parseConfiguration 3");
         bfr.close();
 
         if (line.trim().length() == 0) {
@@ -563,30 +563,30 @@ System.out.println(" parseConfiguration 3");
             }
 
             if (name.length() > 0 && value.length() > 0) {
-                  System.out.println("add configuration  name: " + name + " value: " + value);
+                  //System.out.println("add configuration  name: " + name + " value: " + value);
                 getConfiguration().addAttribute(new Attribute(name.trim(), value.trim()));
-                //System.out.println("  getConfiguration().size()" + getConfiguration().size() + "  getConfiguration()." + getConfiguration().getAttribute(getConfiguration().size() - 1).getValue());
+                ////System.out.println("  getConfiguration().size()" + getConfiguration().size() + "  getConfiguration()." + getConfiguration().getAttribute(getConfiguration().size() - 1).getValue());
 
 
             }
 
         }
-System.out.println(" parseConfiguration out");
+//System.out.println(" parseConfiguration out");
     }
     /*
      * replaces a the file to open with the one in the proxy file
      */
 
     public void replaceProxy() throws FileNotFoundException, IOException, UnknownFileTypeException, TransformerException {
- System.out.println("replaceProxy 1");
+ //System.out.println("replaceProxy 1");
         // do only for files with source equal to proxy or the configuration contains the attribute proxy
         Attribute att = getConfiguration().getAttribute(Constants.Source.PROXY);
- System.out.println("replaceProxy 2 att: "+att);
+ //System.out.println("replaceProxy 2 att: "+att);
         if (att == null) {
             return;
         }
 
-        System.out.println("proxy values: " + att.getValue());
+        //System.out.println("proxy values: " + att.getValue());
         // overide infiles values and effectively point it to actual file
 
         this.setPathAndFileName(att.getValue());

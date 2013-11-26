@@ -116,12 +116,12 @@ public class ConvertPseudoElementsToXML extends Converter {
         String st = "";
         switch (element.getType()) {
             case 0: // comment
-                // System.out.println("writeXML 1a");
+                // ////System.out.println("writeXML 1a");
                 //writeComment(element.getDescription());
                 st = element.getDescription();
                 break;
             case 1: // top
-                // System.out.println("writeXML 1b");
+                // ////System.out.println("writeXML 1b");
                 st += "<";
                 st += element.getElement();
                 st += " ";
@@ -143,7 +143,7 @@ public class ConvertPseudoElementsToXML extends Converter {
                 st += ">";
                 break;
             case 2: // regular
-                // System.out.println("writeXML 1c");
+                // ////System.out.println("writeXML 1c");
                 st = "<";
                 st += element.getElement();
                 st += " ";

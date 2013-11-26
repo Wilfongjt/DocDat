@@ -66,13 +66,13 @@ public class HTMLSplitter {
 
     public void split() throws FileNotFoundException, IOException, UnknownFileTypeException, TransformerException {
         // Stream  - use the InputStreamReaderFactory to initiate the ODTContentInputStreamReader
-        System.out.println("input: " + getIn_path() + getIn_file()) ;
-        System.out.println("output: " + getOut_path() ) ;
+        //System.out.println("input: " + getIn_path() + getIn_file()) ;
+        //System.out.println("output: " + getOut_path() ) ;
         
         File inFile = new File(getIn_path() + getIn_file());
 
         BufferedReader bf = new BufferedReader(new InputStreamReader(new FileInputStream(inFile)));
-        System.out.println("mem 2=" + Runtime.getRuntime().freeMemory());
+        //System.out.println("mem 2=" + Runtime.getRuntime().freeMemory());
 
         String line = "";
         int line_cnt = 0;
@@ -83,12 +83,12 @@ public class HTMLSplitter {
                 String fn = getOutFileName(line);
                
                 if (mf != null) {
-                    System.out.println("close lines: "+line_cnt);
+                    //System.out.println("close lines: "+line_cnt);
                     mf.close();
                     line_cnt = 0;
                     mf = null;
                 } 
-                System.out.println("FileName: " + fn);
+                //System.out.println("FileName: " + fn);
                 File oFile = new File(getOut_path(), fn);
                 if (oFile.exists()) {
                     oFile.delete();
@@ -99,7 +99,7 @@ public class HTMLSplitter {
             
             
             if (mf != null) {
-              //  System.out.println("line: " + line );
+              //  //System.out.println("line: " + line );
                 mf.write(line);
             }
         }
@@ -107,13 +107,13 @@ public class HTMLSplitter {
             mf.close();
         }
 
-        System.out.println("mem 3=" + Runtime.getRuntime().freeMemory());
+        //System.out.println("mem 3=" + Runtime.getRuntime().freeMemory());
 
         bf.close();
-        System.out.println("mem 4=" + Runtime.getRuntime().freeMemory());
-        System.out.println("testOdtReader out");
+        //System.out.println("mem 4=" + Runtime.getRuntime().freeMemory());
+        //System.out.println("testOdtReader out");
 
-        System.out.println("out ");
+        //System.out.println("out ");
 
     }
 

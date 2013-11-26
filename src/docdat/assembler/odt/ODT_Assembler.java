@@ -57,13 +57,13 @@ public class ODT_Assembler {
     
     public void assemble() throws FileNotFoundException, IOException, UnknownFileTypeException, TransformerException {
         // the files can be proxys to other files in other projects
-        //System.out.println(  "assemble 1 getProject_Path():  " +  getProject_Path()  );
+        ////System.out.println(  "assemble 1 getProject_Path():  " +  getProject_Path()  );
         InputFileNames inputFiles = new InputFileNames(getProject_Path());
-         System.out.println(  "assemble 2 " );
+         //System.out.println(  "assemble 2 " );
         
         Project project = new Project(inputFiles);
         
-         System.out.println(  "assemble 3"  );
+         //System.out.println(  "assemble 3"  );
 
         /*
          *
@@ -80,13 +80,13 @@ public class ODT_Assembler {
          *
          */
         for (int i = 0; i < project.size(); i++) {
-            System.out.println("-------------------------------------------------");
+            //System.out.println("-------------------------------------------------");
             InFileName ipn = project.getInFileNames().getFileName(i);
-            System.out.println(" path and filename : " + ipn.getPathAndFileName());
-            System.out.println(" source : " + ipn.getSourceName());
-            System.out.println(" type: " + ipn.getType());
+            //System.out.println(" path and filename : " + ipn.getPathAndFileName());
+            //System.out.println(" source : " + ipn.getSourceName());
+            //System.out.println(" type: " + ipn.getType());
 
-            System.out.println(" elements: " + project.getElements(i).size());
+            //System.out.println(" elements: " + project.getElements(i).size());
 
 
 
@@ -116,16 +116,16 @@ public class ODT_Assembler {
 
             BufferedWriter mf = new BufferedWriter(new FileWriter(mfFile)); // prepare output file
 
-            System.out.println("mem 2=" + Runtime.getRuntime().freeMemory());
+            //System.out.println("mem 2=" + Runtime.getRuntime().freeMemory());
 
             String line = "";
             while ((line = bf.readLine()) != null) {
-                System.out.println(line);
+                //System.out.println(line);
                 mf.write(line);
             }
 
 
-            System.out.println("mem 3=" + Runtime.getRuntime().freeMemory());
+            //System.out.println("mem 3=" + Runtime.getRuntime().freeMemory());
 
             //odtReader.close();
             bf.close();
@@ -164,11 +164,11 @@ public class ODT_Assembler {
             transform_XSLInputStream.close();
             XML_OutputOutputStream.close();
         } else {
-            System.out.println("  No files found in [" + getProject_Path() + "]");
+            //System.out.println("  No files found in [" + getProject_Path() + "]");
         }
-        System.out.println("out: " + "file:/" + getProject_Path().replace("\\", "/") + "merge/" + getOutFileName());
-        System.out.println("mem 4=" + Runtime.getRuntime().freeMemory());
-        System.out.println("testOdtReader out");
+        //System.out.println("out: " + "file:/" + getProject_Path().replace("\\", "/") + "merge/" + getOutFileName());
+        //System.out.println("mem 4=" + Runtime.getRuntime().freeMemory());
+        //System.out.println("testOdtReader out");
     }
 
     private static InputStream getDummyXMLInputStream() {
@@ -282,7 +282,7 @@ public class ODT_Assembler {
 
         rc += "</xsl:stylesheet>" + "\n";
 
-        System.out.println(rc);
+        //System.out.println(rc);
         return new ByteArrayInputStream(rc.getBytes());
 
     }

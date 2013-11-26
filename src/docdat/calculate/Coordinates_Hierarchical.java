@@ -45,11 +45,11 @@ public class Coordinates_Hierarchical implements CoordinatesInterface {
 
     @Override
     public void calculate() {
-        System.out.println(".................. Calulate:"+ getClassName());
+        //System.out.println(".................. Calulate:"+ getClassName());
         //int aw = getActualWidth(getElements());
-        ////System.out.println("calculate size="+getElements().getSteps().size());
+        //////System.out.println("calculate size="+getElements().getSteps().size());
         if (getElements().size() == 0) {
-            System.out.println("calculate reports chart has no steps.");
+            //System.out.println("calculate reports chart has no steps.");
             return;
         }
 
@@ -68,15 +68,15 @@ public class Coordinates_Hierarchical implements CoordinatesInterface {
                     step.setX(getX(step));
                     // step.setY((50 + Constants.MinYOffset) * step.getLevel() );
                     step.setY(getY(step));
-                    //System.out.println("type 1 set X and Y");
+                    ////System.out.println("type 1 set X and Y");
                     break;
                 case 2:
                 case 3:
                     step.setX(getX(step));
-                    //System.out.println(" " + (50 + Constants.MinYOffset) * step.getLevel());
+                    ////System.out.println(" " + (50 + Constants.MinYOffset) * step.getLevel());
                     //step.setY((50 + Constants.MinYOffset) * step.getLevel());
                     step.setY(getY(step));
-                    //System.out.println("type 2,3 set X "+step.getX()+"and Y="+step.getY());
+                    ////System.out.println("type 2,3 set X "+step.getX()+"and Y="+step.getY());
                     break;
 
             }
@@ -103,7 +103,7 @@ public class Coordinates_Hierarchical implements CoordinatesInterface {
         int sum = 0;
 
         if (firstStep == null) {
-            //System.out.println("aw: 0");
+            ////System.out.println("aw: 0");
             return 0;
         }
 
@@ -119,10 +119,10 @@ public class Coordinates_Hierarchical implements CoordinatesInterface {
         //position++;  // move to the very next step
         // check if step exists
         if ((position + 1) >= getElements().size()) {
-            ////System.out.println("x 1 pos:"+position);
+            //////System.out.println("x 1 pos:"+position);
             return firstStep.getW();
         }
-////System.out.println("position: "+position);
+//////System.out.println("position: "+position);
         //int lastlevel =  Constants.MaxNumberOfSteps;
 
         //Step lastStep = firstStep;
@@ -131,7 +131,7 @@ public class Coordinates_Hierarchical implements CoordinatesInterface {
 
             //Step currStep = (Step)getElements().get(i);
             PseudoElement currStep = (PseudoElement) getElements().get(i);
-            ////System.out.println( "["+currStep.getId()+"]" );
+            //////System.out.println( "["+currStep.getId()+"]" );
 
             boolean hasChild = false;
 
@@ -140,7 +140,7 @@ public class Coordinates_Hierarchical implements CoordinatesInterface {
                 PseudoElement child = (PseudoElement) getElements().get(i + 1);
                 if (child.getLevel() > currStep.getLevel()) {
                     hasChild = true;
-                    ////System.out.print(currStep.getId() + " has child " );
+                    //////System.out.print(currStep.getId() + " has child " );
                 }
             }
 
@@ -154,7 +154,7 @@ public class Coordinates_Hierarchical implements CoordinatesInterface {
                 case 3: // command and id
                     if (currStep.getLevel() > firstStep.getLevel()) {
                         if (!hasChild) {
-                            // //System.out.print(" sum = " + sum + " + "+ currStep.getW());
+                            // ////System.out.print(" sum = " + sum + " + "+ currStep.getW());
                             sum += currStep.getW();
                         }
                     }
@@ -163,11 +163,11 @@ public class Coordinates_Hierarchical implements CoordinatesInterface {
                     break;
 
                 default:
-                //System.out.println("default id=" + currStep.getId());
+                ////System.out.println("default id=" + currStep.getId());
 
             }
             if (!firstStep.getId().equals(lastStep.getId()) && firstStep.getLevel() >= lastStep.getLevel()) {
-                ////System.out.print(" break");
+                //////System.out.print(" break");
                 break;
             }
 

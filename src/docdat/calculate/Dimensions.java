@@ -46,7 +46,7 @@ public class Dimensions {
         if (getChart() == null) {
             return;
         }
-System.out.println("    Dimension ");
+//System.out.println("    Dimension ");
         for (int i = 0; i < getChart().size(); i++) {
             //Step step = (Step) getChart().get(i);
             PseudoElement step = (PseudoElement) getChart().get(i);
@@ -78,7 +78,7 @@ System.out.println("    Dimension ");
 
 
                     step.setH(height);
-                    //System.out.println("set W and H");
+                    ////System.out.println("set W and H");
                     break;
             }
         }
@@ -109,7 +109,7 @@ System.out.println("    Dimension ");
             }
             line_ch = tln + (blks * min_ch);
         }
-        //System.out.println(" width: " +line_ch * getCharWidth());
+        ////System.out.println(" width: " +line_ch * getCharWidth());
         return line_ch * getCharWidth();
 
     }

@@ -49,38 +49,38 @@ public class MasterElementsList extends ArrayList {
 
                 PseudoElement el = getCurrentElements().getElement(j);
 
-                System.out.println(" ");
-                System.out.println("name: " + el.getName() +" ");
+                //System.out.println(" ");
+                //System.out.println("name: " + el.getName() +" ");
 
 
                 // look for elements with replace-property, replace-component, replace-function, replace-api, replace-screen 
                 if (el.getName().toLowerCase().contains(Constants.Replace.REPLACE_PROPERTY.toLowerCase())) {
-                    System.out.print("[" + Constants.Replace.REPLACE_PROPERTY + "] ");
+                    //System.out.print("[" + Constants.Replace.REPLACE_PROPERTY + "] ");
 
                     replaceAttribute(el, Constants.Attributes.PROPERTY, Constants.Replace.REPLACE_PROPERTY);
 
                 }
                 if (el.getName().toLowerCase().contains(Constants.Replace.REPLACE_COMPONENT.toLowerCase())) {
-                    System.out.print("[" + Constants.Replace.REPLACE_COMPONENT + "] ");
+                    //System.out.print("[" + Constants.Replace.REPLACE_COMPONENT + "] ");
 
                     replaceAttribute(el, Constants.Attributes.COMPONENT, Constants.Replace.REPLACE_COMPONENT);
 
                 }
                 if (el.getName().toLowerCase().contains(Constants.Replace.REPLACE_FUNCTION.toLowerCase())) {
-                    System.out.print("[" + Constants.Replace.REPLACE_FUNCTION + "] ");
+                    //System.out.print("[" + Constants.Replace.REPLACE_FUNCTION + "] ");
 
                     replaceAttribute(el, Constants.Attributes.FUNCTION, Constants.Replace.REPLACE_FUNCTION);
 
                 }
                 if (el.getName().toLowerCase().contains(Constants.Replace.REPLACE_SCREEN.toLowerCase())) {
-                    System.out.print("[" + Constants.Replace.REPLACE_SCREEN + "] ");
+                    //System.out.print("[" + Constants.Replace.REPLACE_SCREEN + "] ");
 
                     replaceAttribute(el, Constants.Attributes.SCREEN, Constants.Replace.REPLACE_SCREEN);
 
                 }
                 if (el.getName().toLowerCase().contains(Constants.Replace.REPLACE_API.toLowerCase())) {
 
-                    System.out.print("[" + Constants.Replace.REPLACE_API + "] ");
+                    //System.out.print("[" + Constants.Replace.REPLACE_API + "] ");
                     replaceAttribute(el, Constants.Attributes.API, Constants.Replace.REPLACE_API);
 
                 }

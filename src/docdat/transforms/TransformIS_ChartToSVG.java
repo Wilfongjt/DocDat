@@ -45,11 +45,11 @@ public class TransformIS_ChartToSVG extends TransformInputStream {
         if (super.getTransformXSLInputStream() == null) {
            String charttype = ((ChartByteArrayInputStream) getSourceXMLInputStream()).getChartType();
            if(charttype.equalsIgnoreCase(Constants.ChartTypeValues.FLOWCHART  )){
-               System.out.println("flowchart");
+              // System.out.println("flowchart");
                setTransformXSLInputStream( this.getClass().getResourceAsStream("/DocDat/transforms/xsl/flowchart.step.02.xsl") );
             }else{
                 if(charttype.equalsIgnoreCase(Constants.ChartTypeValues.ORCHART )){
-                  System.out.println("Orgchart");
+                  //System.out.println("Orgchart");
                    setTransformXSLInputStream( this.getClass().getResourceAsStream("/DocDat/transforms/xsl/orgchart.step.02.xsl") );
                 }else{
                     throw new IOException("charttype not set " );

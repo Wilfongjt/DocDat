@@ -78,7 +78,7 @@ public class BMML_Assembler {
             String rc = "";
             rc = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" + "\n";
             //rc = "<project>" + "\n";
-            System.out.println(rc);
+            //System.out.println(rc);
             mf.write(rc);
             String line = "";
             while ((line = bf.readLine()) != null) {
@@ -109,7 +109,7 @@ public class BMML_Assembler {
             String rc = "";
             rc = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" + "\n";
             //rc = "<project>" + "\n";
-            System.out.println(rc);
+            //System.out.println(rc);
             mf.write(rc);
             String line = "";
             while ((line = bf.readLine()) != null) {
@@ -152,7 +152,7 @@ public class BMML_Assembler {
             transform_XSLInputStream.close();
             XML_OutputOutputStream.close();
         } else {
-            System.out.println("  No files found in [" + getProject_Path() + "]");
+            //System.out.println("  No files found in [" + getProject_Path() + "]");
         }
         /*
          *
@@ -161,21 +161,21 @@ public class BMML_Assembler {
          */
         /*
         for (int i = 0; i < inputFiles.size(); i++) {
-        System.out.println("-------------------------------------------------");
+        //System.out.println("-------------------------------------------------");
         InFileName ipn = inputFiles.getFileName(i);
-        System.out.println(" path and filename : " + ipn.getPathAndFileName());
-        System.out.println(" source : " + ipn.getSourceName());
-        System.out.println(" type: " + ipn.getType());
+        //System.out.println(" path and filename : " + ipn.getPathAndFileName());
+        //System.out.println(" source : " + ipn.getSourceName());
+        //System.out.println(" type: " + ipn.getType());
         BMML_Assembler_Helper assembler_helper = new BMML_Assembler_Helper(getProject_Path());
         
         // open the bmml file 
         BufferedReader bf = new BufferedReader(new FileReader(inputFiles.getFileName(i).getPathAndFileName()));
         
-        System.out.println("mem 2=" + Runtime.getRuntime().freeMemory());
+        //System.out.println("mem 2=" + Runtime.getRuntime().freeMemory());
         
         String line = "";
         while ((line = bf.readLine()) != null) {
-        System.out.println(line);
+        //System.out.println(line);
         // add src name 
         if (assembler_helper.isMockup(line)) {
         line = line.replace("<mockup", "<mockup src=\"" + ipn.getPathAndFileName() + "\"");
@@ -197,7 +197,7 @@ public class BMML_Assembler {
         }
         
         
-        System.out.println("mem 3=" + Runtime.getRuntime().freeMemory());
+        //System.out.println("mem 3=" + Runtime.getRuntime().freeMemory());
         
         //odtReader.close();
         bf.close();
@@ -205,16 +205,16 @@ public class BMML_Assembler {
         }
         
         rc = "</mockups>" + "\n";
-        System.out.println(rc);
+        //System.out.println(rc);
         mf.write(rc);
         
         
         mf.close();
         
          */
-        System.out.println("out: " + "file:/" + getProject_Path().replace("\\", "/") + "merge/" + "merge.xml");
-        System.out.println("mem 4=" + Runtime.getRuntime().freeMemory());
-        System.out.println("testOdtReader out");
+        //System.out.println("out: " + "file:/" + getProject_Path().replace("\\", "/") + "merge/" + "merge.xml");
+        //System.out.println("mem 4=" + Runtime.getRuntime().freeMemory());
+        //System.out.println("testOdtReader out");
     }
 
     private static InputStream getDummyXMLInputStream() {
@@ -285,7 +285,7 @@ public class BMML_Assembler {
         rc += "    </xsl:template>" + "\n";
         rc += "</xsl:stylesheet>" + "\n";
 
-        System.out.println(rc);
+        //System.out.println(rc);
 
         return new ByteArrayInputStream(rc.getBytes());
 
@@ -366,7 +366,7 @@ public class BMML_Assembler {
     
     rc += "</xsl:stylesheet>" + "\n";
     
-    System.out.println(rc);
+    //System.out.println(rc);
     
     return new ByteArrayInputStream(rc.getBytes());
     

@@ -90,7 +90,7 @@ public class Converter {
         String header = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
         ProcessLogger pl = new ProcessLogger(new File(getExportRootName()));
         //pl.KillLog();
-        System.out.println("writeXMLHeader " + header);
+        //System.out.println("writeXMLHeader " + header);
         pl.WriteNoDate(header);
         //setInBuffer(new BufferedReader(new FileReader(getFiles().)));
 

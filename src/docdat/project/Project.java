@@ -31,14 +31,14 @@ public class Project extends ArrayList {
 
     public Project(InputFileNames inFileNames) throws FileNotFoundException, IOException, UnknownFileTypeException, TransformerException {
         
-        System.out.println("Project 1");
+        ////System.out.println("Project 1");
         
         setInFileNames(inFileNames);
-        System.out.println("Project 2");
+        ////System.out.println("Project 2");
         loadElements();
-        System.out.println("Project 3");
+        ////System.out.println("Project 3");
         loadSpecialElements();
-        System.out.println("Project 4");
+        ////System.out.println("Project 4");
     }
 
     /*
@@ -208,7 +208,7 @@ public class Project extends ArrayList {
          */
         if (chartType.getValue().equalsIgnoreCase(Constants.ChartTypes.ORGCHART)) {
             Attribute orientationAtt = zeroEl.getAttributes().getAttribute(Constants.Attributes.ORIENTATION);
-            System.out.println("orientationAtt : " + orientationAtt);
+            ////System.out.println("orientationAtt : " + orientationAtt);
             if (orientationAtt == null || orientationAtt.getValue().equalsIgnoreCase(Constants.OrientationValues.VERTICAL)) {
 
 

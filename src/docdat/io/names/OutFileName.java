@@ -45,7 +45,7 @@ public class OutFileName extends InFileName {
 
 
    public void makeFolder(){
-       System.out.println("getPath: "+getPath() );
+       //System.out.println("getPath: "+getPath() );
        new File( getPath() ).mkdirs() ;
    }
 

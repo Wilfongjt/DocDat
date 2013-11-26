@@ -70,7 +70,7 @@ public class PseudoElements extends ArrayList {
 
         el.setPosition(size());
         el.setIdx(size());
-        //System.out.println(" " + size() + "  add element " + el.getName());
+        //////System.out.println(" " + size() + "  add element " + el.getName());
         add(el);
     }
     private boolean _Graphable = false; // is set to true once coordinates are calculated
@@ -235,18 +235,18 @@ public class PseudoElements extends ArrayList {
         PseudoElement e = null;
         // make sure this list of element is not empty
         if (size() == 0) {
-            System.out.println("Elements empty");
+            ////System.out.println("Elements empty");
             return null;
         }
         // make sure incommning attrib have values
         if (sumByAtts.length == 0) {
-            System.out.println("Sum by Atts array is empty");
+            ////System.out.println("Sum by Atts array is empty");
             return null;
         }
         // make sure incommning attrib have values
         for (int i = 0; i < sumByAtts.length; i++) {
             if (sumByAtts[i] == null) {
-                //System.out.println("Sum by Atts array has missing one or more  search attributes.");
+                //////System.out.println("Sum by Atts array has missing one or more  search attributes.");
                 return null;
             }
         }
@@ -279,8 +279,8 @@ public class PseudoElements extends ArrayList {
 
             // skip those where id is blank this indicates a spacer
 
-            //System.out.println("sz: "+ emptytest.length() +" id: "+searched_el.getId() + " name: "+searched_el.getName());
-            //System.out.println("type: "+ searched_el.getType());
+            //////System.out.println("sz: "+ emptytest.length() +" id: "+searched_el.getId() + " name: "+searched_el.getName());
+            //////System.out.println("type: "+ searched_el.getType());
             if (searched_el.getType() > 0) {
                 // search  all attributes for value matches
                 if (searched_el.hasMatchingAttributesAndValues(sumByAtts)) {
@@ -314,17 +314,17 @@ public class PseudoElements extends ArrayList {
             return null;
         }
         String findings = "";
-        //  System.out.println("  getElementByAttriubutes 1 sz:" + Atts.length);
+        //  ////System.out.println("  getElementByAttriubutes 1 sz:" + Atts.length);
         for (int k = 0; k < Atts.length; k++) {
             if (Atts[k] == null) {
                 findings += " null";
-                // System.out.println("  getElementByAttriubutes 1a Not Found " + findings);
+                // ////System.out.println("  getElementByAttriubutes 1a Not Found " + findings);
                 return null;
             } else {
                 findings += Atts[k].getValue() + " ";
             }
         }
-        //System.out.println("  getElementByAttriubutes 2");
+        //////System.out.println("  getElementByAttriubutes 2");
         for (int i = 0; i < size(); i++) {
             searched_el = (PseudoElement) get(i); // get element from this list
 
@@ -332,22 +332,22 @@ public class PseudoElements extends ArrayList {
             if (searched_el.hasMatchingAttributesAndValues(Atts)) {
                 // increment the counter
                 //match_counter++;
-                // System.out.println("    found " + findings);
+                // ////System.out.println("    found " + findings);
                 e = searched_el;
                 break;
             } else {
-                // System.out.println("    not found " + findings);
+                // ////System.out.println("    not found " + findings);
             }
 
         }
         /*
          if (match_counter == Atts.length) {
-         System.out.println("  getElementByAttriubutes 3");
+         ////System.out.println("  getElementByAttriubutes 3");
          e = searched_el;
          }
          *
          */
-        // System.out.println("  getElementByAttriubutes out");
+        // ////System.out.println("  getElementByAttriubutes out");
         return e;
     }
 
@@ -371,18 +371,18 @@ public class PseudoElements extends ArrayList {
             return null;
         }
         String findings = "";
-        //  System.out.println("  getElementByAttriubutes 1 sz:" + Atts.length);
+        //  ////System.out.println("  getElementByAttriubutes 1 sz:" + Atts.length);
         for (int k = 0; k < Atts.length; k++) {
             if (Atts[k] == null) {
                 //findings += " null";
-                //System.out.println("  getElementByAttriubutes 1a Not Found " + findings);
+                //////System.out.println("  getElementByAttriubutes 1a Not Found " + findings);
                 return null;
             } else {
                 findings += Atts[k].getValue() + " ";
             }
         }
 
-        //System.out.println("  getElementByAttriubutes 2");
+        //////System.out.println("  getElementByAttriubutes 2");
         //for (int i = 0; i < size(); i++) {
         for (int i = size() - 1; i >= 0; i--) {
             searched_el = (PseudoElement) get(i); // get element from this list
@@ -393,16 +393,16 @@ public class PseudoElements extends ArrayList {
             // search  all attributes for value matches
             if (searched_el.hasMatchingAttributesAndValues(Atts)) {
                 // increment the counter
-                // System.out.println("    found " + findings);
+                // ////System.out.println("    found " + findings);
                 e = searched_el;
                 break;
             } else {
-                // System.out.println("    not found " + findings);
+                // ////System.out.println("    not found " + findings);
             }
 
         }
 
-        // System.out.println("  getElementByAttriubutes out");
+        // ////System.out.println("  getElementByAttriubutes out");
         return e;
     }
 
@@ -410,7 +410,7 @@ public class PseudoElements extends ArrayList {
         PseudoElement e = null;
 
         if (size() == 0) {
-            //System.out.println("getElementByAttribute not found");
+            //////System.out.println("getElementByAttribute not found");
         }
 
         for (int i = 0; i < size(); i++) {  // look in this list
@@ -434,7 +434,7 @@ public class PseudoElements extends ArrayList {
         PseudoElement e = null;
 
         if (size() == 0) {
-            //System.out.println("getElementByAttribute not found");
+            //////System.out.println("getElementByAttribute not found");
         }
         for (int i = 0; i < size(); i++) {  // look in this list
             PseudoElement el = (PseudoElement) get(i); // get element from this list
@@ -564,36 +564,36 @@ public class PseudoElements extends ArrayList {
     }
 
     public PseudoElement getParent(PseudoElement el) {
-//System.out.println("getParent 1 "  );
+//////System.out.println("getParent 1 "  );
         if (el == null || el.getPosition() == 0) {
             return null;
         }
-        //System.out.println("getParent 2 el.getPosition() " + el.getPosition());
+        //////System.out.println("getParent 2 el.getPosition() " + el.getPosition());
 
         int i = el.getPosition() - 1; // position at next potential parent
         // parent will have a lower Idx number preceding element may be a parent or a sibling
 
-        //System.out.println("getParent 21 i=" + i + "  size: " + size());
+        //////System.out.println("getParent 21 i=" + i + "  size: " + size());
 
         PseudoElement elPrev = (PseudoElement) get(i--);
 
-       // System.out.println("getParent 22");
+       // ////System.out.println("getParent 22");
 
         if (elPrev.getLevel() < el.getLevel()) {
 
             return elPrev;
         }
-        //System.out.println("getParent 3");
+        //////System.out.println("getParent 3");
         // skip all the blank lines etc
         while (elPrev.getPosition() != 0 && elPrev.getIdx() == -1) {
 
             elPrev = (PseudoElement) get(i--);
         }
-        //System.out.println("getParent 4");
+        //////System.out.println("getParent 4");
         // start at the el index and go backward
         while (elPrev.getPosition() != 0 && elPrev.getLevel() >= el.getLevel()) {
 
-            //System.out.println("getParent B id:"+elPrev.getId()+" Level: " + elPrev.getLevel() +" pos: "+elPrev.getPosition() );
+            //////System.out.println("getParent B id:"+elPrev.getId()+" Level: " + elPrev.getLevel() +" pos: "+elPrev.getPosition() );
             // skip all the blank lines etc
             elPrev = (PseudoElement) get(i--);
 
@@ -602,7 +602,7 @@ public class PseudoElements extends ArrayList {
             }
 
         }
-        //System.out.println("getParent 5");
+        //////System.out.println("getParent 5");
         return elPrev;
     }
 
@@ -668,9 +668,9 @@ public class PseudoElements extends ArrayList {
 
         //for(int i = 0; i < getCharts().size();i++){
 
-        System.out.println("-------------------------------------------------");
+        ////System.out.println("-------------------------------------------------");
         if (size() == 0) {
-            System.out.println(" PseudoElement is empty");
+            ////System.out.println(" PseudoElement is empty");
         }
         for (int i = 0; i < size(); i++) {
             PseudoElement element = (PseudoElement) get(i);
@@ -681,35 +681,35 @@ public class PseudoElements extends ArrayList {
     }
 
     public void showElement(PseudoElement element, String title) {
-        System.out.println("" + title);
+        ////System.out.println("" + title);
         showElement(element);
     }
 
     public void showElement(PseudoElement element) {
         if (element == null) {
-            System.out.println(" PseudoElement element: " + element);
+            ////System.out.println(" PseudoElement element: " + element);
             return;
         }
-        System.out.println(" PseudoElement element: " + element.getElement());
-        System.out.println(" PseudoElement      id: " + element.getId());
-        System.out.println(" PseudoElement     idx: " + element.getIdx());
+        ////System.out.println(" PseudoElement element: " + element.getElement());
+        ////System.out.println(" PseudoElement      id: " + element.getId());
+        ////System.out.println(" PseudoElement     idx: " + element.getIdx());
 
-        System.out.println(" PseudoElement    name: " + element.getName());
+        ////System.out.println(" PseudoElement    name: " + element.getName());
 
-        System.out.println(" PseudoElement    desc: " + element.getDescription());
-        System.out.println(" PseudoElement    type: " + element.getType());
+        ////System.out.println(" PseudoElement    desc: " + element.getDescription());
+        ////System.out.println(" PseudoElement    type: " + element.getType());
 
-        System.out.println(" PseudoElement    dups: " + element.getDuplicateCount());
-        System.out.println(" PseudoElement   level: " + element.getLevel());
-        System.out.println(" PseudoElement   SkipAttributes:" + getSkipAttributes());
-        System.out.println(" PseudoElement   atts: ");
+        ////System.out.println(" PseudoElement    dups: " + element.getDuplicateCount());
+        ////System.out.println(" PseudoElement   level: " + element.getLevel());
+        ////System.out.println(" PseudoElement   SkipAttributes:" + getSkipAttributes());
+        ////System.out.println(" PseudoElement   atts: ");
         for (int k = 0; k < element.getAttributes().size(); k++) {
             Attribute att = element.getAttributes().getAttribute(k);
 
-            System.out.print("   " + att.getName() + "=" + att.getValue() + "  ");
+            ////System.out.print("   " + att.getName() + "=" + att.getValue() + "  ");
 
         }
-        System.out.println(" ");
+        ////System.out.println(" ");
     }
 
     public void dumpList() {
@@ -820,7 +820,7 @@ public class PseudoElements extends ArrayList {
 
             int WEEK_OF_YEAR = ca1.get(Calendar.WEEK_OF_YEAR);
 
-            //System.out.println("WEEK OF YEAR :" + WEEK_OF_YEAR);
+            //////System.out.println("WEEK OF YEAR :" + WEEK_OF_YEAR);
             rc = tok[2] + "." + WEEK_OF_YEAR;
         }
         return rc;

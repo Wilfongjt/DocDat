@@ -102,20 +102,20 @@ public class FixerHelper {
       // test for elements with ref because those need to be correct
       PseudoElement el = getElements().getElement(i);
       //Attribute att = el.getAttributes().getAttribute(Constants.Attributes.REF);
-      //System.out.println("  -------  fix A ");
+      ////System.out.println("  -------  fix A ");
       //if( att != null && att.getValue().equalsIgnoreCase( Constants.TRUE ) ){ 
       // check name against all the known spelling errors
       for (int k = 0; k < getErrors().size(); k++) {
         Fix fix = (Fix) getErrors().get(k);
         if (fix.getFrom().equalsIgnoreCase(el.getName().trim())) {
-System.out.println(" fix 1: " + fix.getFrom());
+//System.out.println(" fix 1: " + fix.getFrom());
           el.setName(fix.getTo());
 
           break;
         }
         
         if (el.getName().toLowerCase().indexOf( fix.getFrom().toLowerCase() ) > -1 ) {
-System.out.println(" fix 2: " + fix.getFrom());
+//System.out.println(" fix 2: " + fix.getFrom());
           el.setName(  replacePartsOfString(el.getName(),  fix.getFrom() , fix.getTo() )  );
         }
       }

@@ -34,7 +34,7 @@ public class FileUtil {
         home = APP_ROOT.replace("batch", "");
 
         URL myurl = this.getClass().getResource("/DocDat/transforms/xsl/trans.odt.text.xsl");
-        System.out.println(" url " + myurl);
+        //System.out.println(" url " + myurl);
 
 
         return home;
@@ -102,8 +102,8 @@ public class FileUtil {
 
         int lastPeriod = fullPath.lastIndexOf('.');
         String textFileName = fullPath.substring(0, lastPeriod);
-        System.out.println("convert word: " + fullPath);
-        System.out.println("to text: " + textFileName);
+        //System.out.println("convert word: " + fullPath);
+        //System.out.println("to text: " + textFileName);
 
         //finish writing odt import
 

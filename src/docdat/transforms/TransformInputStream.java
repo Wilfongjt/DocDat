@@ -169,27 +169,27 @@ public class TransformInputStream {
      * transform xml with xsl  into buffer
      */
     private void transformJAXPToBAOS() throws TransformerConfigurationException, TransformerException,IOException {
-        System.out.println("transformJAXPToBAOS 1");
+      //  System.out.println("transformJAXPToBAOS 1");
         // XML
         javax.xml.transform.Source xmlSource =
                 new javax.xml.transform.stream.StreamSource(getSourceXMLInputStream());
-System.out.println("transformJAXPToBAOS 2");
+//System.out.println("transformJAXPToBAOS 2");
         // XSL
         javax.xml.transform.Source xsltSource =
                 new javax.xml.transform.stream.StreamSource(getTransformXSLInputStream());
-System.out.println("transformJAXPToBAOS 3");
+//System.out.println("transformJAXPToBAOS 3");
         //javax.xml.transform.Result result = new javax.xml.transform.stream.StreamResult(getXMLOutputOutputStream());
 
         javax.xml.transform.Result result = new javax.xml.transform.stream.StreamResult(getTransBAOS());  // buffered
-System.out.println("transformJAXPToBAOS 4");
+//System.out.println("transformJAXPToBAOS 4");
         // create an instance of TransformerFactory
         javax.xml.transform.TransformerFactory transFact = javax.xml.transform.TransformerFactory.newInstance();
-System.out.println("transformJAXPToBAOS 5");
+//System.out.println("transformJAXPToBAOS 5");
         javax.xml.transform.Transformer trans = transFact.newTransformer(xsltSource);
-System.out.println("transformJAXPToBAOS 6");
+//System.out.println("transformJAXPToBAOS 6");
         // transformToInputStream
         trans.transform(xmlSource, result);
-        System.out.println("transformJAXPToBAOS out");
+        //System.out.println("transformJAXPToBAOS out");
     }
 
     /*

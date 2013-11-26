@@ -82,7 +82,7 @@ public class Gmail_Downloader {
 
     public void download() throws Exception {
 
-        System.out.println("log folder name: " + getLogPathandFileName());
+        //System.out.println("log folder name: " + getLogPathandFileName());
 
         String firstline = "";
 
@@ -102,7 +102,7 @@ public class Gmail_Downloader {
             Message[] message = folder.getMessages();
             Part part = null;
             String contentType = null;
-            System.out.println("Messages: " + message.length);
+            //System.out.println("Messages: " + message.length);
 
 
             ProcessLogger log = new ProcessLogger(getLogPathandFileName(), TMPFILENAME);
@@ -117,7 +117,7 @@ public class Gmail_Downloader {
 
                 if (message[i].getSubject().startsWith(SUBJECT_LINE_TARGET)) {
 
-                    System.out.println(" 2 " + message[i].getSubject());
+                    //System.out.println(" 2 " + message[i].getSubject());
 
                     // Retrieve the message content
                     messagecontentObject = message[i].getContent();
@@ -130,10 +130,10 @@ public class Gmail_Downloader {
                             part = multipart.getBodyPart(k);
                             contentType = part.getContentType();
                             if (contentType.startsWith("text/plain")) {
-                                System.out.println(" 6");
-                                System.out.println("---------reading content type text/plain mail -------------");
+                                //System.out.println(" 6");
+                                //System.out.println("---------reading content type text/plain mail -------------");
                             } else {
-                                System.out.println("--------- attachment part -------------");
+                                //System.out.println("--------- attachment part -------------");
                             }
                         }
 
@@ -143,33 +143,33 @@ public class Gmail_Downloader {
 
                 /*
                 if (!message[i].getSubject().startsWith(SUBJECT_LINE_TARGET)) {
-                System.out.println("------------ Skipping " + (i + 1) + " ------------");
+                //System.out.println("------------ Skipping " + (i + 1) + " ------------");
                 }
-                System.out.println(" 2 "  + message[i].getSubject() );
+                //System.out.println(" 2 "  + message[i].getSubject() );
                  */
                 /*
                 if (message[i].getSubject().startsWith(SUBJECT_LINE_TARGET)) {
-                System.out.println(" 3");
+                //System.out.println(" 3");
                 
-                System.out.println("Subject: " + message[i].getSubject());
+                //System.out.println("Subject: " + message[i].getSubject());
                 
                 
                 // Retrieve the message content
                 messagecontentObject = message[i].getContent();
                 if (messagecontentObject instanceof Multipart) {
-                System.out.println(" 4");
+                //System.out.println(" 4");
                 multipart = (Multipart) message[i].getContent();
                 
-                System.out.println(" has attachement " + multipart.getCount());
+                //System.out.println(" has attachement " + multipart.getCount());
                 for (int k = 1; k < multipart.getCount(); k++) {
-                System.out.println(" 5");
+                //System.out.println(" 5");
                 part = multipart.getBodyPart(k);
                 contentType = part.getContentType();
                 if (contentType.startsWith("text/plain")) {
-                System.out.println(" 6");
-                System.out.println("---------reading content type text/plain mail -------------");
+                //System.out.println(" 6");
+                //System.out.println("---------reading content type text/plain mail -------------");
                 } else {
-                System.out.println("--------- attachment part -------------");
+                //System.out.println("--------- attachment part -------------");
                 }
                 }
                 
@@ -186,7 +186,7 @@ public class Gmail_Downloader {
             getStore().close();
 
         } catch (Exception e) {
-            System.err.println(e.toString());
+            //System.err.println(e.toString());
             if (getStore() != null) {
                 getStore().close();
             }
@@ -196,7 +196,7 @@ public class Gmail_Downloader {
         /*  
         public void download() throws Exception {
         
-        System.out.println("log folder name: " + getLogPathandFileName());
+        //System.out.println("log folder name: " + getLogPathandFileName());
         
         String firstline = "";
         
@@ -216,7 +216,7 @@ public class Gmail_Downloader {
         Message[] message = folder.getMessages();
         Part part = null;
         String contentType = null;
-        System.out.println("Messages: " + message.length);
+        //System.out.println("Messages: " + message.length);
         
         
         ProcessLogger log = new ProcessLogger(getLogPathandFileName(), TMPFILENAME);
@@ -229,32 +229,32 @@ public class Gmail_Downloader {
         
         
         if (!message[i].getSubject().startsWith(SUBJECT_LINE_TARGET)) {
-        System.out.println("------------ Skipping " + (i + 1) + " ------------");
+        //System.out.println("------------ Skipping " + (i + 1) + " ------------");
         }
         
         
         if (message[i].getSubject().startsWith(SUBJECT_LINE_TARGET)) {
-        System.out.println("Subject: " + message[i].getSubject());
+        //System.out.println("Subject: " + message[i].getSubject());
         // Retrieve the message content
         messagecontentObject = message[i].getContent();
         if (messagecontentObject instanceof Multipart) {
         multipart = (Multipart) message[i].getContent();
         
-        System.out.println(" has attachement " + multipart.getCount());
+        //System.out.println(" has attachement " + multipart.getCount());
         for (int k = 1; k < multipart.getCount(); k++) {
         part = multipart.getBodyPart(i);
         contentType = part.getContentType();
         if (contentType.startsWith("text/plain")) {
-        System.out.println("---------reading content type text/plain mail -------------");
+        //System.out.println("---------reading content type text/plain mail -------------");
         } else {
         }
         }
-        // System.out.println("------------ Message " + (i + 1) + " ------------");
+        // //System.out.println("------------ Message " + (i + 1) + " ------------");
         
-        //System.out.println("SentDate : " + message[i].getSentDate());
-        // System.out.println("From : " + message[i].getFrom()[0]);
-        //System.out.println("Subject : " + message[i].getSubject());
-        // System.out.print("Message : ");
+        ////System.out.println("SentDate : " + message[i].getSentDate());
+        // //System.out.println("From : " + message[i].getFrom()[0]);
+        ////System.out.println("Subject : " + message[i].getSubject());
+        // //System.out.print("Message : ");
         
         
         String line = "";
@@ -266,7 +266,7 @@ public class Gmail_Downloader {
         log.Write(line2);
         ProcessLogger pl = new ProcessLogger(getProjectPathName(), TMPFILENAME);
         pl.KillLog();
-        System.out.println("------------ A ------------");
+        //System.out.println("------------ A ------------");
         // move past opening junk
         while (stream.available() != 0) {
         char ch = (char) stream.read();
@@ -276,9 +276,9 @@ public class Gmail_Downloader {
         line = "";
         break;
         }
-        System.out.println("------------ A1 ----------- " + ch);
+        //System.out.println("------------ A1 ----------- " + ch);
         }
-        System.out.println("------------ B ------------");
+        //System.out.println("------------ B ------------");
         // start reading good stuff
         while (stream.available() != 0) {
         
@@ -301,7 +301,7 @@ public class Gmail_Downloader {
         line = line.replaceAll("=92", "'");
         //line.replaceAll(" = ", "");
         pl.WriteNoDate(line);
-        System.out.println(line);
+        //System.out.println(line);
         line = "";
         line += ch;
         }
@@ -365,7 +365,7 @@ public class Gmail_Downloader {
         
         
         }    catch (Exception e) {
-        System.err.println(e.toString());
+        //System.err.println(e.toString());
         if (getStore() != null) {
         getStore().close();
         }
@@ -386,7 +386,7 @@ public class Gmail_Downloader {
         PseudoElement elem = elems.getElement(0);
         
         filename = elem.getName();
-        System.out.println("Name: " + filename);
+        //System.out.println("Name: " + filename);
         if (elem.getAttributes().getAttribute(Constants.Attributes.EXT) != null) {
         filename = filename + EXTSTUB + elem.getAttributes().getAttribute(Constants.Attributes.EXT).getValue();
         } else {
@@ -400,7 +400,7 @@ public class Gmail_Downloader {
         File pf = new File(getProjectPathName(), TMPFILENAME);
         pf.renameTo(tof);
         
-        System.out.println("out");
+        //System.out.println("out");
         
         }
          */
@@ -418,7 +418,7 @@ public class Gmail_Downloader {
         PseudoElement elem = elems.getElement(0);
         
         filename = elem.getName();
-        System.out.println("Name: " + filename);
+        //System.out.println("Name: " + filename);
         if (elem.getAttributes().getAttribute(Constants.Attributes.EXT) != null) {
         filename = filename + EXTSTUB + elem.getAttributes().getAttribute(Constants.Attributes.EXT).getValue();
         } else {
@@ -432,7 +432,7 @@ public class Gmail_Downloader {
         File pf = new File(getProjectPathName(), TMPFILENAME);
         pf.renameTo(tof);
         
-        System.out.println("out");
+        //System.out.println("out");
          */
     }
 }

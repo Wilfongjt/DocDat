@@ -27,10 +27,10 @@ public class InputStreamReaderFactory {
         InputStreamReader is = null;
 
         if (infile.getType().equalsIgnoreCase(Constants.Type.TEXT)) {
-            System.out.println("filename: "+infile.getPathAndFileName());
-            System.out.println("filename: "+infile.getPathAndFileName());
+            //System.out.println("filename: "+infile.getPathAndFileName());
+            //System.out.println("filename: "+infile.getPathAndFileName());
             is = new InputStreamReader(new FileInputStream(infile.getPathAndFileName()));
-            System.out.println("InputStreamReaderFactory 2");
+            //System.out.println("InputStreamReaderFactory 2");
         } else {
 
             if (infile.getType().equalsIgnoreCase(Constants.Type.ODT)) {

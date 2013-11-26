@@ -40,7 +40,7 @@ public class LoadPseudoElements extends Load {
 
         if (elements.getFileName() != null
                 && !elements.getFileName().getProjectName().equalsIgnoreCase(Constants.DUMMYFILENAME)) {
-            //System.out.println(" LoadPseudoElements 2");
+            //////System.out.println(" LoadPseudoElements 2");
             setInBuffer(new BufferedReader(new FileReader(elements.getFileName().getPathAndFileName())));
         }
 
@@ -131,9 +131,9 @@ public class LoadPseudoElements extends Load {
                 int k = i;
                 for (k = i; k < getElements().size() && getElements().getElement(k).getId().startsWith(ignoreVal); k++);
                 k--;
-               // System.out.println("sz =" + getElements().size() + " i = " + i + "  k = " + k);
+               // ////System.out.println("sz =" + getElements().size() + " i = " + i + "  k = " + k);
                 for (int j = k; j >= i; j--) {
-                   // System.out.println("prune i = " + i + "  k = " + k + " j = " + j);
+                   // ////System.out.println("prune i = " + i + "  k = " + k + " j = " + j);
                     getElements().remove(j);
                 }
 
@@ -211,15 +211,15 @@ public class LoadPseudoElements extends Load {
     }
 
     protected void patchRunningNumber() {
-        System.out.println("");
-        System.out.println("patch Running Number: ");
+        ////System.out.println("");
+        ////System.out.println("patch Running Number: ");
         if (getElements().size() == 0) {
-            System.out.println(" Missing Elements ");
+            ////System.out.println(" Missing Elements ");
             return;
         }
 
         if (!getElements().getElement(0).hasAttribute(Constants.Attributes.ROOTID)) {
-            System.out.println(" No root-id for " + getElements().getElement(0).getName());
+            ////System.out.println(" No root-id for " + getElements().getElement(0).getName());
             return;
         }
         try {
@@ -228,7 +228,7 @@ public class LoadPseudoElements extends Load {
             String rootId = att.getValue();
             // replace the first or running-idx number with the root-id + "." + running-idx
             for (int i = 0; i < getElements().size(); i++) {
-//System.out.println("patchRunningNumber 1 " );
+//////System.out.println("patchRunningNumber 1 " );
                 /*
                  * Running Number
                  * 
@@ -238,7 +238,7 @@ public class LoadPseudoElements extends Load {
                 String tempId = el.getRunningIdx();
                 // replace id
                 el.setRunningIdx(rootId + "." + Utils.padFront(tempId, "0", Constants.Padding.PAD_ATT));
-//System.out.println("patchRunningNumber 2 " );
+//////System.out.println("patchRunningNumber 2 " );
                 /*
                  * 
                  *  conver function: attrib to rooted number to match the no:
@@ -247,7 +247,7 @@ public class LoadPseudoElements extends Load {
                  */
                 Attribute att_function = getElements().getElement(i).getAttributes().getAttribute(Constants.Attributes.FUNCTION);
                 if (att_function != null) {
-                    // System.out.println("function: " + att_function.getValue());
+                    // ////System.out.println("function: " + att_function.getValue());
 
                     if (!att_function.getValue().contains(".")) {  // relative reference    
                         att_function.setValue(rootId + "." + Constants.Ids.FUNICTIONS + "." + Utils.padFront(att_function.getValue(), "0", Constants.Padding.PAD_ATT));
@@ -255,7 +255,7 @@ public class LoadPseudoElements extends Load {
                         // absolute reference dont change the number
                     }
                 }
-                //System.out.println("patchRunningNumber 3 " );
+                //////System.out.println("patchRunningNumber 3 " );
                 /*
                  * 
                  * Property Number
@@ -264,14 +264,14 @@ public class LoadPseudoElements extends Load {
                  */
                 Attribute att_property = getElements().getElement(i).getAttributes().getAttribute(Constants.Attributes.PROPERTY);
                 if (att_property != null) {
-                    //System.out.println("Property: " + att_property.getValue());
+                    //////System.out.println("Property: " + att_property.getValue());
                     if (!att_property.getValue().contains(".")) {  // relative reference    
                         att_property.setValue(rootId + "." + Constants.Ids.PROPERTIES + "." + Utils.padFront(att_property.getValue(), "0", Constants.Padding.PAD_ATT));
                     } else {
                         // absolute reference dont change the number
                     }
                 }
-                // System.out.println("patchRunningNumber 4 " );
+                // ////System.out.println("patchRunningNumber 4 " );
                 /*
                  * 
                  *component Number
@@ -280,7 +280,7 @@ public class LoadPseudoElements extends Load {
                  */
                 Attribute att_component = getElements().getElement(i).getAttributes().getAttribute(Constants.Attributes.COMPONENT);
                 if (att_component != null) {
-                    //  System.out.println("Component: " + att_component.getValue());
+                    //  ////System.out.println("Component: " + att_component.getValue());
 
                     if (!att_component.getValue().contains(".")) {  // relative reference    
                         att_component.setValue(rootId + "." + Constants.Ids.COMPONENTS + "." + Utils.padFront(att_component.getValue(), "0", Constants.Padding.PAD_ATT));
@@ -288,7 +288,7 @@ public class LoadPseudoElements extends Load {
                         // absolute reference dont change the number
                     }
                 }
-                // System.out.println("patchRunningNumber 5 " );
+                // ////System.out.println("patchRunningNumber 5 " );
                 /*
                  * 
                  *screen Number
@@ -297,7 +297,7 @@ public class LoadPseudoElements extends Load {
                  */
                 Attribute att_screen = getElements().getElement(i).getAttributes().getAttribute(Constants.Attributes.SCREEN);
                 if (att_screen != null) {
-                    //      System.out.println("Screen: " + att_screen.getValue());
+                    //      ////System.out.println("Screen: " + att_screen.getValue());
 
                     if (!att_screen.getValue().contains(".")) {  // relative reference    
                         att_screen.setValue(rootId + "." + Constants.Ids.SCREENS + "." + Utils.padFront(att_screen.getValue(), "0", Constants.Padding.PAD_ATT));
@@ -305,7 +305,7 @@ public class LoadPseudoElements extends Load {
                         // absolute reference dont change the number
                     }
                 }
-                //  System.out.println("patchRunningNumber 6 " );
+                //  ////System.out.println("patchRunningNumber 6 " );
                 /*
                  * 
                  *api Number
@@ -314,7 +314,7 @@ public class LoadPseudoElements extends Load {
                  */
                 Attribute att_api = getElements().getElement(i).getAttributes().getAttribute(Constants.Attributes.API);
                 if (att_api != null) {
-                    // System.out.println("Api: " + att_api.getValue());
+                    // ////System.out.println("Api: " + att_api.getValue());
 
                     if (!att_api.getValue().contains(".")) {  // relative reference    
                         att_api.setValue(rootId + "." + Constants.Ids.APIs + "." + Utils.padFront(att_api.getValue(), "0", Constants.Padding.PAD_ATT));
@@ -322,7 +322,7 @@ public class LoadPseudoElements extends Load {
                         // absolute reference dont change the number
                     }
                 }
-                // System.out.println("patchRunningNumber 7 " );
+                // ////System.out.println("patchRunningNumber 7 " );
                 /*
                  * 
                  *role Number
@@ -331,7 +331,7 @@ public class LoadPseudoElements extends Load {
                  */
                 Attribute att_role = getElements().getElement(i).getAttributes().getAttribute(Constants.Attributes.ROLE);
                 if (att_role != null) {
-                    //System.out.println("Role: " + att_role.getValue());
+                    //////System.out.println("Role: " + att_role.getValue());
 
                     if (!att_role.getValue().contains(".")) {  // relative reference    
                         att_role.setValue(rootId + "." + Constants.Ids.ROLES + "." + Utils.padFront(att_role.getValue(), "0", Constants.Padding.PAD_ATT));
@@ -339,7 +339,7 @@ public class LoadPseudoElements extends Load {
                         // absolute reference dont change the number
                     }
                 }
-//System.out.println("patchRunningNumber 8 " );
+//////System.out.println("patchRunningNumber 8 " );
                 /*
                  * 
                  * Activity Number
@@ -348,14 +348,14 @@ public class LoadPseudoElements extends Load {
                  */
                 Attribute att_activity = getElements().getElement(i).getAttributes().getAttribute(Constants.Attributes.ACTIVITY);
                 if (att_activity != null) {
-                    //System.out.println("Activity: " + att_activity.getValue());
+                    //////System.out.println("Activity: " + att_activity.getValue());
                     if (!att_activity.getValue().contains(".")) {  // relative reference    
                         att_activity.setValue(rootId + "." + Constants.Ids.ACTIVITIES + "." + Utils.padFront(att_activity.getValue(), "0", Constants.Padding.PAD_ATT));
                     } else {
                         // absolute reference dont change the number
                     }
                 }
-//System.out.println("patchRunningNumber 9 " );
+//////System.out.println("patchRunningNumber 9 " );
                 /*
                  * 
                  * slider number
@@ -364,15 +364,15 @@ public class LoadPseudoElements extends Load {
                  */
                 Attribute att_slider = getElements().getElement(i).getAttributes().getAttribute(Constants.Attributes.SLIDER);
                 if (att_slider != null) {
-                    // System.out.println("Slider: " + att_slider.getValue());
+                    // ////System.out.println("Slider: " + att_slider.getValue());
                     if (!att_slider.getValue().contains(".")) {  // relative reference    
                         att_slider.setValue(rootId + "." + Constants.Ids.SLIDERS + "." + Utils.padFront(att_slider.getValue(), "0", Constants.Padding.PAD_ATT));
                     } else {
                         // absolute reference dont change the number
                     }
-                    // System.out.println("Slider: out " );
+                    // ////System.out.println("Slider: out " );
                 }
-                //System.out.println("patchRunningNumber 10 " );
+                //////System.out.println("patchRunningNumber 10 " );
                 /*
                  * 
                  * ui  number
@@ -381,7 +381,7 @@ public class LoadPseudoElements extends Load {
                  */
                 Attribute att_ui = getElements().getElement(i).getAttributes().getAttribute(Constants.Attributes.UI);
                 if (att_ui != null) {
-                    // System.out.println("intent-bar: " + att_intentbar.getValue());
+                    // ////System.out.println("intent-bar: " + att_intentbar.getValue());
                     if (!att_ui.getValue().contains(".")) {  // relative reference   
 
                         att_ui.setValue(rootId + "." + Constants.Ids.UI + "." + Utils.padFront(att_ui.getValue(), "0", Constants.Padding.PAD_ATT));
@@ -397,7 +397,7 @@ public class LoadPseudoElements extends Load {
                  */
                 Attribute att_intent = getElements().getElement(i).getAttributes().getAttribute(Constants.Attributes.INTENT);
                 if (att_intent != null) {
-                    // System.out.println("intent-bar: " + att_intentbar.getValue());
+                    // ////System.out.println("intent-bar: " + att_intentbar.getValue());
                     if (!att_intent.getValue().contains(".")) {  // relative reference   
 
                         att_intent.setValue(rootId + "." + Constants.Ids.INTENT + "." + Utils.padFront(att_intent.getValue(), "0", Constants.Padding.PAD_ATT));
@@ -413,7 +413,7 @@ public class LoadPseudoElements extends Load {
                  */
                 Attribute att_intentbar = getElements().getElement(i).getAttributes().getAttribute(Constants.Attributes.INTENTBAR);
                 if (att_intentbar != null) {
-                    // System.out.println("intent-bar: " + att_intentbar.getValue());
+                    // ////System.out.println("intent-bar: " + att_intentbar.getValue());
                     if (!att_intentbar.getValue().contains(".")) {  // relative reference   
 
                         att_intentbar.setValue(rootId + "." + Constants.Ids.INTENTBAR + "." + Utils.padFront(att_intentbar.getValue(), "0", Constants.Padding.PAD_ATT));
@@ -429,7 +429,7 @@ public class LoadPseudoElements extends Load {
                  */
                 Attribute att_config = getElements().getElement(i).getAttributes().getAttribute(Constants.Attributes.CONFIG);
                 if (att_config != null) {
-                    // System.out.println("config: " + att_config.getValue());
+                    // ////System.out.println("config: " + att_config.getValue());
                     if (!att_config.getValue().contains(".")) {  // relative reference   
 
                         att_config.setValue(rootId + "." + Constants.Ids.SCREENCONFIGURATIONS + "." + Utils.padFront(att_config.getValue(), "0", Constants.Padding.PAD_ATT));
@@ -439,7 +439,7 @@ public class LoadPseudoElements extends Load {
                 }
 
 
-                //System.out.println("patchRunningNumber 11 " );
+                //////System.out.println("patchRunningNumber 11 " );
                 /*
                  * 
                  * Id Number
@@ -450,90 +450,90 @@ public class LoadPseudoElements extends Load {
                 Attribute att_no = getElements().getElement( i  ).getAttributes().getAttribute(Constants.Attributes.NO);
                 if (att_no != null) {
                     try {
-                        //System.out.println(" ------------------ ") ;
-                        //System.out.println("patchRunningNumber A1 " + getElements().getElement( i  ).getName()  + " i: " + i  + "  pos: " + getElements().getElement( i  ).getPosition() + " size: "+ getElements().size() );
+                        //////System.out.println(" ------------------ ") ;
+                        //////System.out.println("patchRunningNumber A1 " + getElements().getElement( i  ).getName()  + " i: " + i  + "  pos: " + getElements().getElement( i  ).getPosition() + " size: "+ getElements().size() );
                         PseudoElement parent = getElements().getParent(  getElements().getElement( i  )  );
                         PseudoElement parentparent = getElements().getParent(  parent );
-                        //System.out.println("patchRunningNumber A2");
+                        //////System.out.println("patchRunningNumber A2");
                         // determine parenet of the element and fix the number 
-                        //System.err.println("No: " + att_no.getValue());
+                        //////System.err.println("No: " + att_no.getValue());
                         if (parent != null && parent.getName().equalsIgnoreCase(Constants.Element.FUNCTIONS)) {
-                            //System.out.println("patchRunningNumber B3");
+                            //////System.out.println("patchRunningNumber B3");
                             att_no.setValue(rootId + "." + Constants.Ids.FUNICTIONS + "." + Utils.padFront(att_no.getValue(), "0", Constants.Padding.PAD_ATT));
-                          //  System.out.println("patchRunningNumber B31");
+                          //  ////System.out.println("patchRunningNumber B31");
                         } else if (parent != null && parent.getName().equalsIgnoreCase(Constants.Element.PROPERTIES)) {
-                            // System.out.println("patchRunningNumber B4");
+                            // ////System.out.println("patchRunningNumber B4");
                             att_no.setValue(rootId + "." + Constants.Ids.PROPERTIES + "." + Utils.padFront(att_no.getValue(), "0", Constants.Padding.PAD_ATT));
                         } else if (parent != null && parent.getName().equalsIgnoreCase(Constants.Element.SCREENS)) {
-                          //   System.out.println("patchRunningNumber B5");
+                          //   ////System.out.println("patchRunningNumber B5");
                             att_no.setValue(rootId + "." + Constants.Ids.SCREENS + "." + Utils.padFront(att_no.getValue(), "0", Constants.Padding.PAD_ATT));
                         } else if (parent != null && parent.getName().equalsIgnoreCase(Constants.Element.APIs)) {
-                           //  System.out.println("patchRunningNumber B6");
+                           //  ////System.out.println("patchRunningNumber B6");
                             att_no.setValue(rootId + "." + Constants.Ids.APIs + "." + Utils.padFront(att_no.getValue(), "0", Constants.Padding.PAD_ATT));
                         } else if (parent != null && parent.getName().equalsIgnoreCase(Constants.Element.COMPONENTS)) {
-                           //  System.out.println("patchRunningNumber B7");
+                           //  ////System.out.println("patchRunningNumber B7");
                             att_no.setValue(rootId + "." + Constants.Ids.COMPONENTS + "." + Utils.padFront(att_no.getValue(), "0", Constants.Padding.PAD_ATT));
                         } else if (parent != null && parent.getName().equalsIgnoreCase(Constants.Element.ROLES)) {
-                           //  System.out.println("patchRunningNumber B8");
+                           //  ////System.out.println("patchRunningNumber B8");
                             att_no.setValue(rootId + "." + Constants.Ids.ROLES + "." + Utils.padFront(att_no.getValue(), "0", Constants.Padding.PAD_ATT));
                         } else if (parent != null && parent.getName().equalsIgnoreCase(Constants.Element.ACTIVITIES)) {
-                          //   System.out.println("patchRunningNumber B9");
+                          //   ////System.out.println("patchRunningNumber B9");
                             att_no.setValue(rootId + "." + Constants.Ids.ACTIVITIES + "." + Utils.padFront(att_no.getValue(), "0", Constants.Padding.PAD_ATT));
                         } 
                         else if (parent != null && parent.getName().equalsIgnoreCase(Constants.Element.SLIDERS)) {
-                            // System.out.println("patchRunningNumber B10");
+                            // ////System.out.println("patchRunningNumber B10");
                             att_no.setValue(rootId + "." + Constants.Ids.SLIDERS + "." + Utils.padFront(att_no.getValue(), "0", Constants.Padding.PAD_ATT));
                         } 
                         // parent version
                         else if (parent != null && parent.getName().equalsIgnoreCase(Constants.Element.SHAREDSLIDERS)) {
-                          //   System.out.println("patchRunningNumber B11");
+                          //   ////System.out.println("patchRunningNumber B11");
                             att_no.setValue(rootId + "." + Constants.Ids.SLIDERS + "." + Utils.padFront(att_no.getValue(), "0", Constants.Padding.PAD_ATT));
-                           //  System.out.println("patchRunningNumber B12");
+                           //  ////System.out.println("patchRunningNumber B12");
                         } 
                         // PARENT'S PARENT
                         else if (parentparent != null && parentparent.getName().equalsIgnoreCase(Constants.Element.SHAREDSLIDERS)) {
-                          //   System.out.println("patchRunningNumber B11");
+                          //   ////System.out.println("patchRunningNumber B11");
                             att_no.setValue(rootId + "." + Constants.Ids.SLIDERS + "." + Utils.padFront(att_no.getValue(), "0", Constants.Padding.PAD_ATT));
-                           //  System.out.println("patchRunningNumber B12");
+                           //  ////System.out.println("patchRunningNumber B12");
                         }                         
                         else if (parent != null && parent.getName().equalsIgnoreCase(Constants.Element.SCREENCONFIGURATIONS)) {
-                         //    System.out.println("patchRunningNumber B13");
+                         //    ////System.out.println("patchRunningNumber B13");
                             att_no.setValue(rootId + "." + Constants.Ids.SCREENCONFIGURATIONS + "." + Utils.padFront(att_no.getValue(), "0", Constants.Padding.PAD_ATT));
                         } 
                         else if (parent != null && parent.getName().equalsIgnoreCase(Constants.Element.INTENTBARS )) {
-                         //    System.out.println("patchRunningNumber B13");
+                         //    ////System.out.println("patchRunningNumber B13");
                             att_no.setValue(rootId + "." + Constants.Ids.INTENTBAR + "." + Utils.padFront(att_no.getValue(), "0", Constants.Padding.PAD_ATT));
                         } 
                         else if (parent != null && getElements().getElement( i  ).getName().equalsIgnoreCase(Constants.Element.INTENTBAR)) {
-                          //  System.out.println("patchRunningNumber B1");
+                          //  ////System.out.println("patchRunningNumber B1");
                             att_no.setValue(rootId + "." + Constants.Ids.INTENTBAR + "." + Utils.padFront(att_no.getValue(), "0", Constants.Padding.PAD_ATT));
-                           // System.out.println("patchRunningNumber B2");
+                           // ////System.out.println("patchRunningNumber B2");
                         } 
                         // parent version
                         else if (parent != null && parent.getName().equalsIgnoreCase(Constants.Element.SHAREDUIS)) {
-                         //    System.out.println("patchRunningNumber B13");
+                         //    ////System.out.println("patchRunningNumber B13");
                             att_no.setValue(rootId + "." + Constants.Ids.UI + "." + Utils.padFront(att_no.getValue(), "0", Constants.Padding.PAD_ATT));
                         }                       
                         // PARENT'S PARENT
                         else if (parentparent != null && parentparent.getName().equalsIgnoreCase(Constants.Element.SHAREDUIS)) {
-                         //    System.out.println("patchRunningNumber B13");
+                         //    ////System.out.println("patchRunningNumber B13");
                             att_no.setValue(rootId + "." + Constants.Ids.UI + "." + Utils.padFront(att_no.getValue(), "0", Constants.Padding.PAD_ATT));
                         }           
                         // parent version
                         else if (parent != null && parent.getName().equalsIgnoreCase(Constants.Element.INTENTS)) {
-                         //    System.out.println("patchRunningNumber B13");
+                         //    ////System.out.println("patchRunningNumber B13");
                             att_no.setValue(rootId + "." + Constants.Ids.INTENT + "." + Utils.padFront(att_no.getValue(), "0", Constants.Padding.PAD_ATT));
                         }  
                         // parent version
                         else if (parent != null && parent.getName().equalsIgnoreCase(Constants.Element.SLIDERINTENTS)) {
-                         //    System.out.println("patchRunningNumber B13");
+                         //    ////System.out.println("patchRunningNumber B13");
                             att_no.setValue(rootId + "." + Constants.Ids.INTENT + "." + Utils.padFront(att_no.getValue(), "0", Constants.Padding.PAD_ATT));
                         }                        
                         else {
                             att_no.setValue(rootId + "-" + Utils.padFront(att_no.getValue(), "0", Constants.Padding.PAD_ATT));
                         }
                     } catch (Exception e) {
-                        System.out.println("patchRunningNumber B " + e.toString());
+                        ////System.out.println("patchRunningNumber B " + e.toString());
                     }
                     
                     
@@ -543,32 +543,32 @@ public class LoadPseudoElements extends Load {
 
             }
         } catch (Exception e) {
-            System.out.println("patchRunningNumber A " + e.toString());
+            ////System.out.println("patchRunningNumber A " + e.toString());
         }
     }
 
     protected void patchReplaceProperty() {
-        System.out.println("");
-        System.out.println("patch Replace Property: ");
+        ////System.out.println("");
+        ////System.out.println("patch Replace Property: ");
         int replace_cnt = 0;
         int replaced_cnt = 0;
         if (getElements().size() == 0) {
-            System.out.println(" Missing Elements ");
+            ////System.out.println(" Missing Elements ");
             return;
         }
         try {
 
             for (int i = 0; i < getElements().size(); i++) {
-                //  System.out.println("Replace Property 1");
+                //  ////System.out.println("Replace Property 1");
                 PseudoElement el = getElements().getElement(i);
-                System.out.println(" -----------------------------------------------------");
-                System.out.println("  Element:  " + el.getName() + " id:" + el.getId());
-                System.out.println(" -----------------------------------------------------");
+                ////System.out.println(" -----------------------------------------------------");
+                ////System.out.println("  Element:  " + el.getName() + " id:" + el.getId());
+                ////System.out.println(" -----------------------------------------------------");
 
                 // replace-function
                 // find string in text
                 if (el.getName().toLowerCase().contains(Constants.Replace.REPLACE_FUNCTION.toLowerCase())) {
-                    System.out.println(" 1) Replace Function");
+                    ////System.out.println(" 1) Replace Function");
                     replace_cnt++;
                     replaceAttribute(el, Constants.Attributes.FUNCTION, Constants.Replace.REPLACE_FUNCTION);
                 }
@@ -576,7 +576,7 @@ public class LoadPseudoElements extends Load {
                 // replace-property
                 // find string in text
                 if (el.getName().toLowerCase().contains(Constants.Replace.REPLACE_PROPERTY.toLowerCase())) {
-                    System.out.println("   2) Replace Property");
+                    ////System.out.println("   2) Replace Property");
                     replace_cnt++;
 
                     replaceAttribute(el, Constants.Attributes.PROPERTY, Constants.Replace.REPLACE_PROPERTY);
@@ -586,7 +586,7 @@ public class LoadPseudoElements extends Load {
                 // replace-function
                 // find string in text
                 if (el.getName().toLowerCase().contains(Constants.Replace.REPLACE_SCREEN.toLowerCase())) {
-                    System.out.println("   3) Replace Screen");
+                    ////System.out.println("   3) Replace Screen");
                     replace_cnt++;
 
                     replaceAttribute(el, Constants.Attributes.SCREEN, Constants.Replace.REPLACE_SCREEN);
@@ -594,7 +594,7 @@ public class LoadPseudoElements extends Load {
 
                 // find string in text
                 if (el.getName().toLowerCase().contains(Constants.Replace.REPLACE_COMPONENT.toLowerCase())) {
-                    System.out.println("  4) Replace Component : " + el.getName() + "    " + el.getRunningIdx());
+                    ////System.out.println("  4) Replace Component : " + el.getName() + "    " + el.getRunningIdx());
                     replace_cnt++;
 
                     replaceAttribute(el, Constants.Attributes.COMPONENT, Constants.Replace.REPLACE_COMPONENT);
@@ -602,21 +602,21 @@ public class LoadPseudoElements extends Load {
 
                 // find string in text
                 if (el.getName().toLowerCase().contains(Constants.Replace.REPLACE_API.toLowerCase())) {
-                    System.out.println("  5 Replace API");
+                    ////System.out.println("  5 Replace API");
                     replace_cnt++;
 
                     replaceAttribute(el, Constants.Attributes.API, Constants.Replace.REPLACE_API);
                 }
                 // find string in text
                 if (el.getName().toLowerCase().contains(Constants.Replace.REPLACE_ROLE.toLowerCase())) {
-                    System.out.println("  6 Replace Role");
+                    ////System.out.println("  6 Replace Role");
                     replace_cnt++;
 
                     replaceAttribute(el, Constants.Attributes.ROLE, Constants.Replace.REPLACE_ROLE);
                 }
 
                 if (el.getName().toLowerCase().contains(Constants.Replace.REPLACE_WORD.toLowerCase())) {
-                    System.out.println("  7 Replace Word");
+                    ////System.out.println("  7 Replace Word");
                     replace_cnt++;
 
                     replaceWord(el, Constants.Attributes.WORD, Constants.Replace.REPLACE_WORD);
@@ -627,11 +627,11 @@ public class LoadPseudoElements extends Load {
 
 
         } catch (Exception e) {
-            System.out.println(e.toString());
+            ////System.out.println(e.toString());
         }
 
-        System.out.println("Replace Property found: " + replace_cnt);
-        System.out.println("Replace Property replaced: " + replaced_cnt);
+        ////System.out.println("Replace Property found: " + replace_cnt);
+        ////System.out.println("Replace Property replaced: " + replaced_cnt);
     }
 
     protected void replaceWord(PseudoElement el, String attName, String replaceName) {
@@ -651,11 +651,11 @@ public class LoadPseudoElements extends Load {
             // go get the referenced element
             Attribute word = new Attribute(Constants.Attributes.WORD, parent_prop.getValue());
 
-            // System.out.println("Replace Property 4 no name: " + no.getName() + "  value: " + no.getValue());
+            // ////System.out.println("Replace Property 4 no name: " + no.getName() + "  value: " + no.getValue());
             // PseudoElement prop_el = getElements().getElementFromAttribute(no);
 
             //if (prop_el != null) {
-            // System.out.println("       Replace Property 5 " + prop_el.getName());
+            // ////System.out.println("       Replace Property 5 " + prop_el.getName());
             while (el.getName().toLowerCase().indexOf(replaceName.toLowerCase()) >= 0) {
                 int pos1 = el.getName().toLowerCase().indexOf(replaceName.toLowerCase());
 
@@ -688,18 +688,18 @@ public class LoadPseudoElements extends Load {
             parent_prop = getParentAncestor(el, attName);
         }
 
-        // System.out.println("replaceAttribute 1 " + el.getName());
+        // ////System.out.println("replaceAttribute 1 " + el.getName());
 
         if (parent_prop != null) {
 
             // go get the referenced element
             Attribute no = new Attribute(Constants.Attributes.NO, parent_prop.getValue());
 
-            // System.out.println("Replace Property 4 no name: " + no.getName() + "  value: " + no.getValue());
+            // ////System.out.println("Replace Property 4 no name: " + no.getName() + "  value: " + no.getValue());
             PseudoElement prop_el = getElements().getElementFromAttribute(no);
 
             if (prop_el != null) {
-                // System.out.println("       Replace Property 5 " + prop_el.getName());
+                // ////System.out.println("       Replace Property 5 " + prop_el.getName());
                 while (el.getName().toLowerCase().indexOf(replaceName.toLowerCase()) >= 0) {
                     int pos1 = el.getName().toLowerCase().indexOf(replaceName.toLowerCase());
 
@@ -739,11 +739,11 @@ public class LoadPseudoElements extends Load {
         while (pel != null && pel.getPosition() > 0) {
 
             if (pel != null) {
-                //System.out.println("getParentAncestor 4 " + attName);
+                //////System.out.println("getParentAncestor 4 " + attName);
                 // Attribute att_property = pel.getAttributes().getAttribute(Constants.Attributes.PROPERTY);
                 Attribute att_property = pel.getAttributes().getAttribute(attName);
                 if (att_property != null) {
-                    //System.out.println("getParentAncestor 5 " + att_property.getValue());
+                    //////System.out.println("getParentAncestor 5 " + att_property.getValue());
                     return att_property;
                 }
             }
@@ -804,7 +804,7 @@ public class LoadPseudoElements extends Load {
 
             }
         } catch (Exception e) {
-            System.out.println(e.toString());
+            ////System.out.println(e.toString());
         }
     }
 
@@ -853,7 +853,7 @@ public class LoadPseudoElements extends Load {
 
             }
         } catch (Exception e) {
-            System.out.println(e.toString());
+            ////System.out.println(e.toString());
         }
     }
 
@@ -881,7 +881,7 @@ public class LoadPseudoElements extends Load {
 
             }
         } catch (Exception e) {
-            System.out.println(e.toString());
+            ////System.out.println(e.toString());
         }
     }
 
@@ -907,7 +907,7 @@ public class LoadPseudoElements extends Load {
 
             }
         } catch (Exception e) {
-            System.out.println(e.toString());
+            ////System.out.println(e.toString());
         }
     }
 
@@ -932,7 +932,7 @@ public class LoadPseudoElements extends Load {
         boolean rc = true;
         // is array proper
         if (atts == null) {
-            System.out.println("validateAtts  atts  are  null ");
+            ////System.out.println("validateAtts  atts  are  null ");
             return false;
         }
         // are array values not null
@@ -941,11 +941,11 @@ public class LoadPseudoElements extends Load {
             // are array values not nul
             if (atts[i] == null) {
                 rc = false;
-                System.out.println("validateAtts  atts[" + i + "]: null ");
+                ////System.out.println("validateAtts  atts[" + i + "]: null ");
             } else {
                 if (atts[i].getValue() == null) {
                     rc = false;
-                    System.out.println("validateAtts  atts[" + i + "]: " + atts[i].getName() + "  value: " + atts[i].getValue());
+                    ////System.out.println("validateAtts  atts[" + i + "]: " + atts[i].getName() + "  value: " + atts[i].getValue());
                 }
             }
         }
@@ -983,7 +983,7 @@ public class LoadPseudoElements extends Load {
         for (int i = 0; i < getElements().size(); i++) {
             PseudoElement elm = getElements().getElement(i);
             elm.setIdx(i);
-            //System.out.println(" element: " + elm.getElement() + " name: " + elm.getName());
+            //////System.out.println(" element: " + elm.getElement() + " name: " + elm.getName());
 
         }
     }
@@ -1008,9 +1008,9 @@ public class LoadPseudoElements extends Load {
         for (int i = 0; i < elements.size(); i++) {
 
             PseudoElement e = elements.getElement(i);
-            System.out.println(" e: " + e.getName());
+            ////System.out.println(" e: " + e.getName());
             summaryElements.addPseudoElement(e);
-            System.out.println("---------------------------");
+            ////System.out.println("---------------------------");
         }
 
         setElements(summaryElements);
@@ -1061,8 +1061,8 @@ public class LoadPseudoElements extends Load {
         for (int i = 0; i < elements.size(); i++) {
             PseudoElement e = elements.getElement(i);
             PseudoElement clone_e = null;
-            //System.out.println("------------------------------------------------------------------------------------------- ");
-            //System.out.println("Element: " + e.getName());
+            //////System.out.println("------------------------------------------------------------------------------------------- ");
+            //////System.out.println("Element: " + e.getName());
             // showElement(e);
 
             if (config.isZeroElement(e)) {
@@ -1082,7 +1082,7 @@ public class LoadPseudoElements extends Load {
 
             if (hasNests) {
                 // is this a nest
-                // //System.out.println("  hasNests ");
+                // //////System.out.println("  hasNests ");
                 if (config.isNestBy(e)) {
                     e.getNestByValues(attsNestBy);// get values from e to use in search
                     ///////////////////////////
@@ -1110,36 +1110,36 @@ public class LoadPseudoElements extends Load {
 
             // add groups with no nests
             if (hasGroups) {
-                ////System.out.println("");
-                //System.out.println("  hasGroups - 1 " + config.isGroupBy(e) + " " + config.isNestBy(e));
+                ////////System.out.println("");
+                //////System.out.println("  hasGroups - 1 " + config.isGroupBy(e) + " " + config.isNestBy(e));
                 if (config.isGroupBy(e) && !config.isNestBy(e)) {
-                    //System.out.println("  isGroup ");
+                    //////System.out.println("  isGroup ");
                     // clone
                     // add atts: any count, sum, avg atts with defaults of 0
                     // add to summary
-                    // //System.out.println("is GroupBy name: " + e.getName());
-                    //System.out.println("  hasGroups 2 1");
+                    // //////System.out.println("is GroupBy name: " + e.getName());
+                    //////System.out.println("  hasGroups 2 1");
                     e.getGroupByValues(attsGroupBy);// get values from e to use in search
                     // attempt to find in the summary
                     Attribute lastNestByAtt = null;
                     if (hasNests) {// when nest by then get the last att to limit search
                         lastNestByAtt = attsNestBy[attsNestBy.length - 1];
                     }
-                    //System.out.println("  hasGroups - 3");
+                    //////System.out.println("  hasGroups - 3");
                     clone_e = summaryElements.getLastElementByAttributes(attsGroupBy, lastNestByAtt);
-                    //System.out.println("  hasGroups - 4");
+                    //////System.out.println("  hasGroups - 4");
                     /////////////////////////
                     // add a group if not found
                     /////////////////
                     if (clone_e == null) {
-                        //System.out.println("  hasGroups - 5");
+                        //////System.out.println("  hasGroups - 5");
                         //clone_e = e.clone();
                         //clone_e.setIdx(summaryElements.size() + 1); // update numbers
                         clone_e = config.getMinimumFunctionCopy(e); // min copy and initialize counts, sums, avg
                         summaryElements.addPseudoElement(clone_e);
                     }
 
-                    //System.out.println("  hasGroups - 6");
+                    //////System.out.println("  hasGroups - 6");
 
                     e.getCountValues(attsCountValues);
                     clone_e.countAttributes(config.getCountTargetArray(attsCountValues));
@@ -1158,7 +1158,7 @@ public class LoadPseudoElements extends Load {
             // handle the situation when no groupby and no nests
             //////////
             if (hasCounts && !hasGroups && !hasNests) {
-                //     //System.out.println("  isGroupby "+config);
+                //     //////System.out.println("  isGroupby "+config);
                 if (config.isCount(e) && !config.isGroupBy(e) && !config.isNestBy(e)) {
                     e.getCountValues(attsCountValues);
                     clone_e = summaryElements.getZeroElement();
@@ -1192,23 +1192,23 @@ public class LoadPseudoElements extends Load {
     }
 
     public void showElement(PseudoElement e) {
-        System.out.println("   Element:" + e.getName());
+        ////System.out.println("   Element:" + e.getName());
         for (int i = 0; i < e.getAttributes().size(); i++) {
             Attribute att = e.getAttributes().getAttribute(i);
-            System.out.println("      name: " + att.getName() + "  value: " + att.getValue());
+            ////System.out.println("      name: " + att.getName() + "  value: " + att.getValue());
         }
     }
 
     public void showAttributes(Attribute[] atts, String title) {
-        System.out.println("showAttibutes " + title);
+        ////System.out.println("showAttibutes " + title);
         if (atts == null) {
-            System.out.println(" showAttributes  null");
+            ////System.out.println(" showAttributes  null");
         }
         for (int i = 0; i < atts.length; i++) {
             if (atts[i] != null) {
-                System.out.println("  showAttributes  name: " + atts[i].getName() + "  value: " + atts[i].getValue());
+                ////System.out.println("  showAttributes  name: " + atts[i].getName() + "  value: " + atts[i].getValue());
             } else {
-                System.out.println(" showAttributes  name: atts[" + i + "]=null");
+                ////System.out.println(" showAttributes  name: atts[" + i + "]=null");
             }
         }
     }
@@ -1219,7 +1219,7 @@ public class LoadPseudoElements extends Load {
     }
 
     protected void backwardPass(Configuration config, PseudoElements elements) {
-        System.out.println("backwardPass 1");
+        ////System.out.println("backwardPass 1");
         //   PseudoElement[] nestElems = config.getEmptyNestElmentsArray();
         //PseudoElements elements = getElements(); // get loaded elements
         //Configuration config = elements.getFileName().getConfiguration();
@@ -1247,7 +1247,7 @@ public class LoadPseudoElements extends Load {
         // cruz throug elements back ward
         for (int i = elements.size() - 1; i >= 0; i--) {
 
-            System.out.println("--------------------------------------------");
+            ////System.out.println("--------------------------------------------");
             PseudoElement e = elements.getElement(i);
 
             if (config.isZeroElement(e)) {
@@ -1258,33 +1258,33 @@ public class LoadPseudoElements extends Load {
 
 
                 if (e.getName().trim().length() > 0 && !config.isNestBy(e)) {
-                    System.out.println(" sum, count, avg  " + e.getName() + "  value: ");
+                    ////System.out.println(" sum, count, avg  " + e.getName() + "  value: ");
                     // add to nests
 
                     PseudoElement nest_e = config.getNextNestUpFrom(i, elements);// get the next level up
 
                     if (nest_e != null) {// when null then done
-                        System.out.println("  count, sum, avg to " + nest_e.getName());
-                        /*        System.out.println("backwardPass 10 nest_e: " + nest_e.getName());
-                         System.out.println("backwardPass 10 e: " + e.getName());
+                        ////System.out.println("  count, sum, avg to " + nest_e.getName());
+                        /*        ////System.out.println("backwardPass 10 nest_e: " + nest_e.getName());
+                         ////System.out.println("backwardPass 10 e: " + e.getName());
                          // loop through all the counts
                          //count are not good
                          e.getCountValues(attsCount); // get count values from current element
                          for (int k = 0; k < attsCount.length; k++) {
-                         System.out.println("    name: " + attsCount[k].getName() + "  value: " + attsCount[k].getValue());
+                         ////System.out.println("    name: " + attsCount[k].getName() + "  value: " + attsCount[k].getValue());
                          }
             
                          nest_e.countAttributes(attsCount); // add counts to nest element
                          */
                     }
                 } else {
-                    System.out.println(" nest  " + e.getName());
+                    ////System.out.println(" nest  " + e.getName());
                 }
 
             }
         }
 
-        System.out.println("backwardPass out");
+        ////System.out.println("backwardPass out");
     }
 
     protected void buildSums() {
@@ -1306,7 +1306,7 @@ public class LoadPseudoElements extends Load {
             }
 
             for (int i = 0; i < elements.size(); i++) {
-                System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx--------------------------------------");
+                ////System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx--------------------------------------");
                 PseudoElement el = elements.getElement(i);
                 el.getNestByValues(attsNestBy);
                 el.getGroupByValues(attsGroupBy);
@@ -1316,7 +1316,7 @@ public class LoadPseudoElements extends Load {
                 //validateAtts(attsAvg);
 
                 if (attsGroupBy == null) {
-                    System.out.println(" null attsFind");
+                    ////System.out.println(" null attsFind");
                     break;
                 }
 
@@ -1327,17 +1327,17 @@ public class LoadPseudoElements extends Load {
                 // is element already in list if true then skip it... avoid duplicates
                 // stop the unmatched group bys from going in
                 //       validate the current elements attributs
-                System.out.println("buildSums 3");
+                ////System.out.println("buildSums 3");
                 PseudoElement chkGroupBy_el = summaryElements.getElementByAttriubutes(attsGroupBy);
-                System.out.println("buildSums 4");
+                ////System.out.println("buildSums 4");
 
                 if (chkGroupBy_el == null) {// not in summary so attempt to add
-                    System.out.println("buildSums 4a");
+                    ////System.out.println("buildSums 4a");
                     // add new element
                     if (validateAtts(attsGroupBy) && validateAtts(attsSum)) { // check for null atts
                         PseudoElement sum_el = elements.summerizeByAttributes(attsGroupBy);
                         if (sum_el != null) {
-                            System.out.println("buildSums 4c");
+                            ////System.out.println("buildSums 4c");
                             summaryElements.addPseudoElement(sum_el);
                             sum_el.sumAttributes(attsSum);  // add values to sum element
                             sum_el.avgAttributes(attsAvg);
@@ -1446,7 +1446,7 @@ public class LoadPseudoElements extends Load {
     private int lineCount = 0; // counter for alternate numbering
 
     protected void loadLine(String line) {
-        //System.out.println("loadLine: " + line);
+        //////System.out.println("loadLine: " + line);
         // get id
         // get element name
         // get attributes
@@ -1454,10 +1454,10 @@ public class LoadPseudoElements extends Load {
         String ln = "";
 
         //ProcessLogger pl = new ProcessLogger(getOutFileName());
-        //System.out.println("loadLine 1 " + line);
+        //////System.out.println("loadLine 1 " + line);
 
 
-//System.out.println("mindjet prefix: [" + getMindjetPrefix() +"]" );
+//////System.out.println("mindjet prefix: [" + getMindjetPrefix() +"]" );
 
         if (line == null) {
             return;
@@ -1485,13 +1485,13 @@ public class LoadPseudoElements extends Load {
         for (int t = 0; t < line2.length(); t++) {
             char c = line2.charAt(t);
             if ((int) c > 31 && (int) c < 127) {
-                // System.out.println("add c: " + c );
+                // ////System.out.println("add c: " + c );
                 ln += c;
             }
 
         }
 
-        //System.out.println("loadLine A  [" + ln + "]");
+        //////System.out.println("loadLine A  [" + ln + "]");
         if (ln.trim().length() == 0) {
             return;
         }
@@ -1499,7 +1499,7 @@ public class LoadPseudoElements extends Load {
         ln = ln.trim();
 
         if (ln.contains(Constants.MindJet.TitleBreak)) {
-            System.out.println("set mindjet prefix");
+            ////System.out.println("set mindjet prefix");
             setMindjetPrefix(Constants.MindJet.Prefix);
             return;
         }
@@ -1522,19 +1522,19 @@ public class LoadPseudoElements extends Load {
 
             }
         }
-        //System.out.println("loadLine B  [" + ln + "]");
+        //////System.out.println("loadLine B  [" + ln + "]");
 
         /*
          // test code
          {
          for (int t = 0; t < ln.length(); t++) {
-         System.out.println(" char: " + ln.charAt(t) + " acsii:" + (int)ln.charAt(t) + "  no: " + Integer.toHexString(ln.charAt(t)));
+         ////System.out.println(" char: " + ln.charAt(t) + " acsii:" + (int)ln.charAt(t) + "  no: " + Integer.toHexString(ln.charAt(t)));
          }
          }
          */
 
 
-        //  System.out.println("loadLine 2 "+ ln);
+        //  ////System.out.println("loadLine 2 "+ ln);
         /////////////////////////
         // deal with comments
         ////////////////
@@ -1548,7 +1548,7 @@ public class LoadPseudoElements extends Load {
 
             return;
         }
-        // System.out.println("loadLine 3 ");
+        // ////System.out.println("loadLine 3 ");
         ////////////////////////////////
         // must start with a number
         //////////////////
@@ -1557,7 +1557,7 @@ public class LoadPseudoElements extends Load {
             getElements().addPseudoElement(comment);
             return;
         }
-        //System.out.println("loadLine 4");
+        //////System.out.println("loadLine 4");
         ////////////////////////////////////////////
         // get ID,  the level and the child position
         ///////////////////////
@@ -1570,7 +1570,7 @@ public class LoadPseudoElements extends Load {
         // get id
         // get the level and the child position
         String numeric = "0123456789.,";
-        //System.out.println("loadLine 5");
+        //////System.out.println("loadLine 5");
 
 
         for (i = 0; ln != null && i < ln.length() && numeric.indexOf(ln.charAt(i)) >= 0; i++) {
@@ -1602,16 +1602,16 @@ public class LoadPseudoElements extends Load {
             childIndex = new Integer(child).intValue();
 
             if (childIndex > 0) {
-                //System.out.println("child a");
+                //////System.out.println("child a");
                 childIndex = childIndex - 1;
             }
         } catch (Exception e) {
-            //  System.out.println("child b");
+            //  ////System.out.println("child b");
             childIndex = 0;
 
         } // set level
 
-        //  System.out.println("id = " + id);
+        //  ////System.out.println("id = " + id);
         if (id.equals("0")) {
             setLevel(0);
         } else {
@@ -1628,7 +1628,7 @@ public class LoadPseudoElements extends Load {
         // boolean foundFirstBlank = false;
         // boolean isComment = false;
         String elementName = ""; // default is blank
-        //System.out.println("elementname: " + elementName );
+        //////System.out.println("elementname: " + elementName );
 
         // handle [definition: asdkf]
         boolean useFirstAttributeAsElementName = false; // flag to indicate that the first attributes name should be used for the element name
@@ -1697,7 +1697,7 @@ public class LoadPseudoElements extends Load {
 
 
         for (; i < ln.length(); i++) {
-            //System.out.println("ch: " + ch);
+            //////System.out.println("ch: " + ch);
             ch = ln.charAt(i);
             switch (ch) {
                 case '[':
@@ -1750,17 +1750,17 @@ public class LoadPseudoElements extends Load {
         // sort out the naming of element
         //////////////
 
-        //System.out.println("");
-//System.out.print("elementName:"+elementName);
+        //////System.out.println("");
+//////System.out.print("elementName:"+elementName);
         if (getItemTagName().trim().length() == 0) {
             // this code is used with adhoc imports files to provide an element name
             setItemTagName(getElements().getSource());
-            // System.out.print(" A");
+            // ////System.out.print(" A");
         }
 
         if (getItemTagName().trim().length() == 0) {
             if (elementName.length() == 0) {
-                // System.out.print(" B");
+                // ////System.out.print(" B");
                 // elementName is set to the first attribute'firstDigit name
                 useFirstAttributeAsElementName = true;
 
@@ -1770,10 +1770,10 @@ public class LoadPseudoElements extends Load {
             if (elementName.length() == 0) {
                 // set the element name to the ItemTagName
                 //elementName = getItemTagName();
-//System.out.print(" C");
+//////System.out.print(" C");
                 useFirstAttributeAsElementName = true;
             } else {
-                //System.out.print(" D");
+                //////System.out.print(" D");
                 // use the elementName as the value of the name attribute
 
                 if (attribs.getAttribute(Constants.Attributes.NAME) == null) { // no name so need one
@@ -1824,17 +1824,17 @@ public class LoadPseudoElements extends Load {
         }
 
         pe.setId(id.trim());
-//System.out.println("ProperCase: " + getProperCase(   unqNameValue.trim()     ));
+//////System.out.println("ProperCase: " + getProperCase(   unqNameValue.trim()     ));
         //while(elementName.contains("\"")){  elementName = elementName.replace("\"", "'") ;  }
         while (unqNameValue.indexOf("\"") >= 0) {
             unqNameValue = unqNameValue.replace("\"", "'");
-            System.out.println("unqNameValue: replace: quot");
+            ////System.out.println("unqNameValue: replace: quot");
         }
 
         pe.setElement(elementName.trim());
         //  if(pe.getAttributes().getAttribute(Constants.Attributes.NAME) == null){   }// name att not already added
         pe.setName(unqNameValue.trim());
-//System.out.println("unqNameValue: replace: "+ pe.getName()  );   
+//////System.out.println("unqNameValue: replace: "+ pe.getName()  );   
 
         if (id.equals("0")) {
             pe.setType(Constants.ElementTypes.FIRST); // top
@@ -1867,11 +1867,11 @@ public class LoadPseudoElements extends Load {
 
 
         getElements().addPseudoElement(pe);
-//System.out.println("name: " + pe.getName() + "   child: " + pe.getChildNo() );
+//////System.out.println("name: " + pe.getName() + "   child: " + pe.getChildNo() );
         // getStack().push("</" + element + ">"); // push closing element for later
-        //   System.out.println("loadLine out");
+        //   ////System.out.println("loadLine out");
         if (pe.getAttributes().getAttribute(Constants.Attributes.CHARTTYPE) != null) {
-            System.out.println("  charttype: " + pe.getAttributes().getAttribute(Constants.Attributes.CHARTTYPE).getValue());
+            ////System.out.println("  charttype: " + pe.getAttributes().getAttribute(Constants.Attributes.CHARTTYPE).getValue());
         }
     }
 
@@ -1899,11 +1899,11 @@ public class LoadPseudoElements extends Load {
     }
 
     public void showList() {
-        System.out.println(".........................");
+        ////System.out.println(".........................");
 
 
         ((PseudoElements) getElements()).showList();
-        System.out.println(".........................");
+        ////System.out.println(".........................");
     }
 
     protected String getWeek(String strDate) {
@@ -1920,7 +1920,7 @@ public class LoadPseudoElements extends Load {
 
             int WEEK_OF_YEAR = ca1.get(Calendar.WEEK_OF_YEAR);
 
-            //System.out.println("WEEK OF YEAR :" + WEEK_OF_YEAR);
+            //////System.out.println("WEEK OF YEAR :" + WEEK_OF_YEAR);
             rc = tok[2] + "." + WEEK_OF_YEAR;
         }
         return rc;

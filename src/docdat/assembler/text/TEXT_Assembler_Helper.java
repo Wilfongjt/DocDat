@@ -51,17 +51,17 @@ public class TEXT_Assembler_Helper {
     public boolean isAsset(String line) {
 
         if (line.startsWith("<src>")) {
-            System.out.println(" asset 1");
+            //System.out.println(" asset 1");
             return false;
         }
 
         if (!line.contains("/assets/")) {
-            System.out.println(" asset 2");
+            //System.out.println(" asset 2");
             return false;
         }
 
         if (line.contains("/symbols.")) {
-            System.out.println(" asset 3");
+            //System.out.println(" asset 3");
             return false;
         }
 
@@ -72,17 +72,17 @@ public class TEXT_Assembler_Helper {
     public boolean isSymbol(String line) {
 
         if (line.startsWith("<src>")) {
-            System.out.println(" symbol 1");
+            //System.out.println(" symbol 1");
             return false;
         }
 
         if (!line.contains("/assets/")) {
-            System.out.println(" symbol 2");
+            //System.out.println(" symbol 2");
             return false;
         }
 
         if (!line.contains("/symbols.")) {
-            System.out.println(" symbol 3");
+            //System.out.println(" symbol 3");
             return false;
         }
 
