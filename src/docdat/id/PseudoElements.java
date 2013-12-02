@@ -25,6 +25,8 @@ public class PseudoElements extends ArrayList {
      }
      */
 
+    private int Index = 0;
+
     public PseudoElements() throws FileNotFoundException, IOException, UnknownFileTypeException, TransformerException {
         setFileName(new InFileName(Constants.Default.Path, Constants.Default.Project, Constants.Default.Source));
 
@@ -37,6 +39,33 @@ public class PseudoElements extends ArrayList {
 
     public String getClassName() {
         return "PseudoElements";
+    }
+
+    public void ResetIndex() {
+        Index = 0;
+    }
+
+    public PseudoElement getNext() {
+        if (getIndex() >= size()) {
+            return null;
+        }
+        PseudoElement rc = getElement(getIndex());
+
+        incrementIndex();
+
+        return rc;
+    }
+
+    public int getIndex() {
+        return Index;
+    }
+
+    public void incrementIndex() {
+        this.Index = Index + 1;
+    }
+
+    public void setIndex(int Index) {
+        this.Index = Index;
     }
 
     public boolean isProxy() {
@@ -538,6 +567,9 @@ public class PseudoElements extends ArrayList {
             if (nextElem == null) {
                 return null;
             }
+            if (el.getLevel() > nextElem.getLevel()) {
+                return null;
+            }
             if (el.getLevel() == nextElem.getLevel()) {
                 return siblilng = nextElem;
             }
@@ -563,6 +595,34 @@ public class PseudoElements extends ArrayList {
         return null;
     }
 
+    public PseudoElement getParentFromAttribute(PseudoElement el, Attribute attSearch) {
+        PseudoElement rc = null;
+        if (el == null) {
+            return null;
+        }
+
+        PseudoElement parent = getParent(el);
+        if (parent == null) {
+            return null;
+        }
+
+        Attribute att = parent.getAttributes().getAttribute(attSearch.getName());
+
+        if (att != null) {
+            if (att.getValue().equalsIgnoreCase(attSearch.getValue())) {
+                rc = parent;
+            } else {
+                rc = getParentFromAttribute(parent, attSearch);
+            }
+        } else {
+            rc = getParentFromAttribute(parent, attSearch);
+        }
+
+        //parent = getParent(parent);
+
+        return rc;
+    }
+
     public PseudoElement getParent(PseudoElement el) {
 //////System.out.println("getParent 1 "  );
         if (el == null || el.getPosition() == 0) {
@@ -577,7 +637,7 @@ public class PseudoElements extends ArrayList {
 
         PseudoElement elPrev = (PseudoElement) get(i--);
 
-       // ////System.out.println("getParent 22");
+        // ////System.out.println("getParent 22");
 
         if (elPrev.getLevel() < el.getLevel()) {
 
