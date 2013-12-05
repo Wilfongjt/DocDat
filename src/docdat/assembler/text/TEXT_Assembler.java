@@ -46,6 +46,8 @@ public class TEXT_Assembler {
 
     setMasterElements(master);
   }
+  
+
   /*
    * List of all PseudoElements 
    * this is used when we need to save all teh elements for post processing

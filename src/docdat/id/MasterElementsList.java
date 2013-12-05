@@ -49,10 +49,6 @@ public class MasterElementsList extends ArrayList {
 
                 PseudoElement el = getCurrentElements().getElement(j);
 
-                //System.out.println(" ");
-                //System.out.println("name: " + el.getName() +" ");
-
-
                 // look for elements with replace-property, replace-component, replace-function, replace-api, replace-screen 
                 if (el.getName().toLowerCase().contains(Constants.Replace.REPLACE_PROPERTY.toLowerCase())) {
                     //System.out.print("[" + Constants.Replace.REPLACE_PROPERTY + "] ");
