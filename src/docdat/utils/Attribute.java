@@ -61,7 +61,8 @@ public class Attribute {
     this._Color = _Color;
   }
   public String toString(){
-      return "name: " + getName() + "  value: "+ getValue();
+      //return "name: " + getName() + "  value: "+ getValue();
+       return  "["+getName() + ": "+ getValue() +"]";
   }
   
     public Attribute getClone(){

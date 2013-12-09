@@ -730,7 +730,7 @@ public class PseudoElements extends ArrayList {
 
         ////System.out.println("-------------------------------------------------");
         if (size() == 0) {
-            ////System.out.println(" PseudoElement is empty");
+            System.out.println(" PseudoElement is empty");
         }
         for (int i = 0; i < size(); i++) {
             PseudoElement element = (PseudoElement) get(i);
@@ -747,29 +747,17 @@ public class PseudoElements extends ArrayList {
 
     public void showElement(PseudoElement element) {
         if (element == null) {
-            ////System.out.println(" PseudoElement element: " + element);
+            System.out.println(" PseudoElement element: " + element);
             return;
         }
-        ////System.out.println(" PseudoElement element: " + element.getElement());
-        ////System.out.println(" PseudoElement      id: " + element.getId());
-        ////System.out.println(" PseudoElement     idx: " + element.getIdx());
 
-        ////System.out.println(" PseudoElement    name: " + element.getName());
-
-        ////System.out.println(" PseudoElement    desc: " + element.getDescription());
-        ////System.out.println(" PseudoElement    type: " + element.getType());
-
-        ////System.out.println(" PseudoElement    dups: " + element.getDuplicateCount());
-        ////System.out.println(" PseudoElement   level: " + element.getLevel());
-        ////System.out.println(" PseudoElement   SkipAttributes:" + getSkipAttributes());
-        ////System.out.println(" PseudoElement   atts: ");
         for (int k = 0; k < element.getAttributes().size(); k++) {
             Attribute att = element.getAttributes().getAttribute(k);
 
-            ////System.out.print("   " + att.getName() + "=" + att.getValue() + "  ");
+            System.out.println("   " + att.getName() + "=" + att.getValue() + "  ");
 
         }
-        ////System.out.println(" ");
+        System.out.println(" ");
     }
 
     public void dumpList() {
